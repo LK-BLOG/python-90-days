@@ -1,96 +1,88 @@
-# Boss Challenge: 函数式数据管道
+# Boss Challenge: 多格式报告生成器
 # Day 1 - 难度: ★★★★★
 #
-# 用函数参数系统构建灵活的数据处理管道。
+# 只用 Day 1 学到的函数参数知识，不依赖任何其他概念。
 # 参考 README.md 了解具体要求。
 
-def pipeline(data, *operations, **config):
-    """数据处理管道
+def generate_report(title, headers, rows, format="text", separator=",", 
+                    show_total=False, sort_by=None, max_width=None):
+    """生成格式化报告
     
     Args:
-        data: 输入数据（列表）
-        *operations: 处理操作函数
-        **config: 全局配置
+        title: 报告标题 (str)
+        headers: 列名列表 (list[str])
+        rows: 数据行 (list[list])
+        format: 输出格式 "text"/"csv"/"markdown"/"html"
+        separator: CSV分隔符 (str)
+        show_total: 是否显示数字列统计 (bool)
+        sort_by: 按第几列排序 (int or None)
+        max_width: text格式最大列宽 (int or None)
     
     Returns:
-        处理后的数据
+        格式化的报告字符串 (str)
     """
-    # TODO: 实现管道逻辑，依次执行每个操作
+    # TODO: 实现报告生成逻辑
+    # 提示：根据 format 参数选择不同的输出格式
+    # 提示：先处理排序（如果有的话）
+    # 提示：最后处理统计行（如果需要的话）
     pass
 
 
-def op_filter(data, condition=None, key=None):
-    """过滤操作"""
-    # TODO: 实现过滤逻辑
+def _format_text(title, headers, rows, max_width=None):
+    """纯文本表格格式"""
+    # TODO: 实现文本对齐表格
+    # 提示：计算每列的最大宽度，然后用 | 和 - 拼接
     pass
 
 
-def op_map(data, func=None, key=None):
-    """映射操作"""
-    # TODO: 实现映射逻辑
+def _format_csv(headers, rows, separator=","):
+    """CSV格式"""
+    # TODO: 实现CSV输出
     pass
 
 
-def op_sort(data, key=None, reverse=False):
-    """排序操作"""
-    # TODO: 实现排序逻辑
+def _format_markdown(headers, rows):
+    """Markdown表格格式"""
+    # TODO: 实现Markdown表格
     pass
 
 
-def op_group(data, key=None, agg=None):
-    """分组聚合操作"""
-    # TODO: 实现分组逻辑
+def _format_html(title, headers, rows):
+    """HTML表格格式"""
+    # TODO: 实现HTML表格
     pass
 
 
-def op_limit(data, n=10):
-    """限制数量"""
-    # TODO: 实现限制逻辑
-    pass
-
-
-def op_unique(data, key=None):
-    """去重操作"""
-    # TODO: 实现去重逻辑
-    pass
-
-
-class Pipeline:
-    """支持链式调用的管道类"""
+def print_report(*columns, **options):
+    """打印报告的便捷接口
     
-    def __init__(self, data):
-        # TODO: 初始化
-        pass
+    *columns: 任意数量的列数据
+    **options: 所有格式选项（format/separator/sort_by等）
+    """
+    # TODO: 实现便捷接口
+    pass
+
+
+def compare_reports(*reports, show_diff=False):
+    """对比多份报告
     
-    def filter(self, **kwargs):
-        # TODO: 添加过滤操作
-        return self
-    
-    def map(self, **kwargs):
-        # TODO: 添加映射操作
-        return self
-    
-    def sort(self, **kwargs):
-        # TODO: 添加排序操作
-        return self
-    
-    def limit(self, n=10):
-        # TODO: 添加限制操作
-        return self
-    
-    def result(self):
-        # TODO: 执行所有操作并返回结果
-        pass
+    *reports: 任意数量的报告字符串
+    show_diff: 是否高亮差异
+    """
+    # TODO: 实现报告对比
+    pass
 
 
 if __name__ == "__main__":
-    # 基础测试数据
-    students = [
-        {"name": "Alice", "age": 20, "score": 85},
-        {"name": "Bob", "age": 22, "score": 92},
-        {"name": "Charlie", "age": 20, "score": 78},
-        {"name": "Diana", "age": 21, "score": 95},
+    headers = ["Name", "Age", "Score"]
+    rows = [
+        ["Alice", 20, 85],
+        ["Bob", 22, 92],
+        ["Charlie", 20, 78],
+        ["Diana", 21, 95],
     ]
     
-    print("Boss Challenge: 函数式数据管道")
+    print("Boss Challenge: 多格式报告生成器")
+    print("=" * 40)
     print("请实现所有 TODO 方法")
+    print("只用 Day 1 学到的函数参数知识！")
