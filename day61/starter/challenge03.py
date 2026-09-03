@@ -1,5 +1,18 @@
-# Day 61 - Challenge 3: Challenge 3
-# 难度: ***oo
+# Day 61 - Challenge 3
+# Difficulty: ***oo
 #
-# TODO: 根据 challenge.md 的要求实现功能
+# Requirements: see challenge.md
 
+def main():
+    """Challenge 3
+    Implement the required functionality.
+    """
+    # TODO: Design your solution
+    # 1. Analyze requirements from challenge.md
+    # 2. Design function/class structure
+    # 3. Implement step by step
+    # 4. Test and verify
+    print("Challenge: Challenge 3")
+
+if __name__ == "__main__":
+    main()
