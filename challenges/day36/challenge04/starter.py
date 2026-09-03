@@ -1,0 +1,6 @@
+# Challenge 04: 缓存模式
+# TODO: 实现 Cache-Aside 模式
+# def get_user_cached(user_id): ...
+# def invalidate_cache(user_id): ...
+# TODO: 处理缓存穿透
+# TODO: 处理缓存雪崩

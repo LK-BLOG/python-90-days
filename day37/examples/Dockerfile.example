@@ -1,0 +1,29 @@
+# Day 37 Dockerfile 示例
+# --- 基础 Dockerfile ---
+# FROM python:3.11-slim
+# WORKDIR /app
+# ENV PYTHONDONTWRITEBYTECODE=1
+# ENV PYTHONUNBUFFERED=1
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
+# COPY . .
+# EXPOSE 8000
+# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# --- 多阶段构建示例 ---
+# 构建阶段
+# FROM python:3.11-slim as builder
+# WORKDIR /app
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
+
+# 运行阶段
+# FROM python:3.11-slim
+# WORKDIR /app
+# COPY --from=builder /install /usr/local
+# COPY . .
+# RUN useradd -m appuser
+# USER appuser
+# EXPOSE 8000
+# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+print('Dockerfile 示例 - 请查看源码注释')

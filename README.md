@@ -1,171 +1,254 @@
-# 🐍 Python 30天高速进阶计划
+# 🐍 Python 90 Days
 
-> 30天、每天约2小时，从Python基础到能独立开发中型项目的实战训练营
+**From Python to AI Agent Engineering**
 
-## 📋 课程目标
+> 90天高密度 Python → AI Agent 工程进阶训练
 
-- 掌握Python核心高级特性（闭包、装饰器、生成器、上下文管理器）
-- 熟练运用OOP进行软件设计与开发
-- 掌握文件IO、JSON、模块系统等工程化技能
-- 能独立调用REST API、处理异步编程
-- 具备开发AI CLI Agent等中型项目的能力
-- 为后续学习FastAPI、AI开发打下坚实基础
+---
 
-## 🎯 适合谁
+## 项目介绍
 
-- 已掌握Python基础语法（变量、循环、条件、列表、字典、函数、类基础）
-- 每天能投入约2小时
-- 目标是"能写代码"而不是"看懂教程"
+这不是一个"从零学Python"的教程。
 
-## 📅 30天路线图
+这是一个为有基础的开发者设计的**高强度工程训练计划**：90天、每天约2-3小时，从Python高级特性一路推进到能独立设计和实现AI Agent Runtime。
 
-### 阶段一：Python基础进阶（Day 1-6）
+**你将获得的能力：**
 
-| 天数 | 主题 | 核心内容 |
-|------|------|----------|
-| [Day 1](day01/) | 函数参数 | 位置参数、关键字参数、默认参数、`*args`、`**kwargs` |
-| [Day 2](day02/) | 函数高级 | 函数作为变量/参数、lambda、`map/filter/sorted` |
-| [Day 3](day03/) | 作用域与闭包 | LEGB、`global/nonlocal`、闭包原理与应用 |
-| [Day 4](day04/) | 字符串高级 | 切片、格式化、正则基础、文本处理 |
-| [Day 5](day05/) | 数据结构进阶 | 推导式、嵌套结构、`enumerate/zip`、数据操作 |
-| [Day 6](day06/) | 异常处理 | 完整异常链、自定义异常、防御性编程 |
+- Python高级特性完全掌握（闭包/装饰器/生成器/元编程）
+- 独立开发中大型Python工程的能力
+- Web API、数据库、Docker、CI/CD全链路
+- AI应用开发（LLM API/RAG/Embedding）
+- Agent系统设计与实现（Tool/Memory/Planning/Context）
 
-**🏁 阶段项目 → [Day 7: CLI Todo & 数据管理器](day07/)**
+---
 
-### 阶段二：工程化基础（Day 8-12）
-
-| 天数 | 主题 | 核心内容 |
-|------|------|----------|
-| [Day 8](day08/) | 文件 I/O | `open`、读写追加、`with`、编码处理 |
-| [Day 9](day09/) | JSON | 序列化/反序列化、自定义编码器、数据持久化 |
-| [Day 10](day10/) | pathlib + os | 路径操作、目录遍历、环境变量、文件管理器 |
-| [Day 11](day11/) | 模块系统 | `import`机制、模块搜索、`__name__`、项目拆分 |
-| [Day 12](day12/) | Package | 包结构、`__init__.py`、模块依赖、工具包开发 |
-
-**🏁 阶段项目 → Day 7 的 CLI Todo 升级为完整包结构**
-
-### 阶段三：面向对象深入（Day 13-18）
-
-| 天数 | 主题 | 核心内容 |
-|------|------|----------|
-| [Day 13](day13/) | OOP 深入① | `class/self`、实例/类方法、设计模式基础 |
-| [Day 14](day14/) | OOP 深入② | 继承、`super()`、方法重写、MRO |
-| [Day 15](day15/) | OOP 深入③ | 封装、property、`classmethod/staticmethod` |
-| [Day 16](day16/) | 魔术方法 | `__str__/__eq__/__len__/__getitem__`、运算符重载 |
-| [Day 17](day17/) | dataclass | `@dataclass`、类型提示、对象序列化 |
-| [Day 18](day18/) | OOP 项目 | 综合运用——RPG/游戏核心框架 |
-
-**🏁 阶段项目 → [Day 18: RPG游戏核心框架](day18/)**
-
-### 阶段四：高级特性（Day 19-23）
-
-| 天数 | 主题 | 核心内容 |
-|------|------|----------|
-| [Day 19](day19/) | 迭代器 | iterable/iterator协议、`iter()/next()`、自定义迭代器 |
-| [Day 20](day20/) | 生成器 | `yield`、`yield from`、生成器表达式、流式处理 |
-| [Day 21](day21/) | 装饰器 | 闭包+装饰器、带参数装饰器、`@timer/@debug/@retry` |
-| [Day 22](day22/) | 上下文管理器 | `with`协议、`contextlib`、数据库连接管理 |
-| [Day 23](day23/) | 类型系统 | type hints、`Optional/Union`、Protocol、泛型 |
-
-**🏁 阶段项目 → Day 22 的上下文管理器 + Day 21 装饰器 = 日志/重试中间件系统**
-
-### 阶段五：工程实战（Day 24-28）
-
-| 天数 | 主题 | 核心内容 |
-|------|------|----------|
-| [Day 24](day24/) | Python 工程化 | `pip`、venv、项目结构、依赖管理 |
-| [Day 25](day25/) | Debug + 测试 | `unittest/pytest`、测试用例、覆盖率 |
-| [Day 26](day26/) | HTTP | HTTP协议、请求/响应、状态码、Headers |
-| [Day 27](day27/) | API 实战 | `requests`、REST API、异常处理、重试机制 |
-| [Day 28](day28/) | asyncio | `async/await`、Task、并发、`gather` |
-
-**🏁 阶段项目 → Day 27-28: 多API聚合服务 + 缓存系统**
-
-### 阶段六：AI与毕业（Day 29-30）
-
-| 天数 | 主题 | 核心内容 |
-|------|------|----------|
-| [Day 29](day29/) | AI + Agent | LLM API、Prompt Engineering、Function Calling、Memory |
-| [Day 30](day30/) | 毕业项目 | **独立完成 AI CLI Assistant / Agent** |
-
-## 🏗️ 阶段性项目递进路线
+## 学习路线
 
 ```
-Day 7:  CLI Todo（函数+文件+异常）
+Phase 1 — Python Core & Advanced Python
+Day 01–30
+Python基础快速推进 → 高级特性 → 工程化入门
+
+        ↓
+
+Phase 2 — Python Engineering
+Day 31–60
+测试 → Web框架 → 数据库 → Docker → 设计模式 → 部署
+
+        ↓
+
+Phase 3 — AI Engineering
+Day 61–75
+LLM API → Prompt Engineering → RAG → 向量数据库 → 多模态
+
+        ↓
+
+Phase 4 — Agent Engineering
+Day 76–90
+Agent架构 → 工具系统 → Planning → Memory → 多Agent → 毕业项目
+```
+
+---
+
+## 四个阶段
+
+### Phase 1 — Python Core & Advanced Python (Day 01–30)
+
+快速掌握Python核心，进入高级领域。
+
+| 天数 | 主题 |
+|------|------|
+| [Day 01](day01/) | 函数参数 |
+| [Day 02](day02/) | 函数高级 |
+| [Day 03](day03/) | 作用域与闭包 |
+| [Day 04](day04/) | 字符串高级 |
+| [Day 05](day05/) | 数据结构进阶 |
+| [Day 06](day06/) | 异常处理 |
+| [Day 07](day07/) | **项目：CLI Todo** |
+| [Day 08](day08/) | 文件 I/O |
+| [Day 09](day09/) | JSON |
+| [Day 10](day10/) | pathlib + os |
+| [Day 11](day11/) | 模块系统 |
+| [Day 12](day12/) | Package |
+| [Day 13](day13/) | OOP 深入① |
+| [Day 14](day14/) | OOP 深入② |
+| [Day 15](day15/) | OOP 深入③ |
+| [Day 16](day16/) | 魔术方法 |
+| [Day 17](day17/) | dataclass |
+| [Day 18](day18/) | **项目：RPG游戏框架** |
+| [Day 19](day19/) | 迭代器 |
+| [Day 20](day20/) | 生成器 |
+| [Day 21](day21/) | 装饰器 |
+| [Day 22](day22/) | 上下文管理器 |
+| [Day 23](day23/) | 类型系统 |
+| [Day 24](day24/) | pip & 工程化 |
+| [Day 25](day25/) | Debug + 测试 |
+| [Day 26](day26/) | HTTP 协议 |
+| [Day 27](day27/) | API 实战 |
+| [Day 28](day28/) | asyncio 异步编程 |
+| [Day 29](day29/) | AI + Agent 基础 |
+| [Day 30](day30/) | **项目：AI CLI Assistant** |
+
+### Phase 2 — Python Engineering (Day 31–60)
+
+从"会写Python"升级到"会做工程"。
+
+| 天数 | 主题 |
+|------|------|
+| [Day 31](day31/) | Git & 项目结构 |
+| [Day 32](day32/) | 测试体系 |
+| [Day 33](day33/) | FastAPI 基础 |
+| [Day 34](day34/) | FastAPI 进阶 |
+| [Day 35](day35/) | SQL & SQLAlchemy |
+| [Day 36](day36/) | 数据库进阶 |
+| [Day 37](day37/) | Docker 基础 |
+| [Day 38](day38/) | Docker 进阶 + 微服务 |
+| [Day 39](day39/) | REST API 设计 |
+| [Day 40](day40/) | 消息队列 & 异步任务 |
+| [Day 41](day41/) | CLI工具开发 |
+| [Day 42](day42/) | 日志 & 监控 |
+| [Day 43](day43/) | 性能分析 & 优化 |
+| [Day 44](day44/) | 安全基础 |
+| [Day 45](day45/) | 设计模式 |
+| [Day 46](day46/) | SOLID原则 |
+| [Day 47](day47/) | 依赖注入 & IoC |
+| [Day 48](day48/) | 配置管理 |
+| [Day 49](day49/) | 缓存策略 |
+| [Day 50](day50/) | **项目：REST API ①** |
+| [Day 51](day51/) | **项目：REST API ②** |
+| [Day 52](day52/) | **项目：REST API ③** |
+| [Day 53](day53/) | 网络编程 |
+| [Day 54](day54/) | WebSocket |
+| [Day 55](day55/) | 任务调度 |
+| [Day 56](day56/) | 搜索引擎 |
+| [Day 57](day57/) | 序列化 & 数据格式 |
+| [Day 58](day58/) | 打包 & 分发 |
+| [Day 59](day59/) | 代码质量 |
+| [Day 60](day60/) | 部署 & DevOps |
+
+### Phase 3 — AI Engineering (Day 61–75)
+
+进入AI领域，掌握LLM应用开发。
+
+| 天数 | 主题 |
+|------|------|
+| [Day 61](day61/) | LLM 基础 |
+| [Day 62](day62/) | Prompt Engineering 基础 |
+| [Day 63](day63/) | Prompt Engineering 进阶 |
+| [Day 64](day64/) | Function Calling & Tool Use |
+| [Day 65](day65/) | RAG 基础 |
+| [Day 66](day66/) | 向量数据库 |
+| [Day 67](day67/) | Embedding & 文本处理 |
+| [Day 68](day68/) | RAG 进阶 |
+| [Day 69](day69/) | AI 应用架构 |
+| [Day 70](day70/) | 多模态 AI |
+| [Day 71](day71/) | 微调基础 |
+| [Day 72](day72/) | AI 安全 & 对齐 |
+| [Day 73](day73/) | AI 评估体系 |
+| [Day 74](day74/) | **项目：智能文档助手①** |
+| [Day 75](day75/) | **项目：智能文档助手②** |
+
+### Phase 4 — Agent Engineering (Day 76–90)
+
+最终阶段：独立设计和实现AI Agent。
+
+| 天数 | 主题 |
+|------|------|
+| [Day 76](day76/) | Agent 架构概述 |
+| [Day 77](day77/) | 工具系统 |
+| [Day 78](day78/) | 工具开发实战 |
+| [Day 79](day79/) | Planning & 目标分解 |
+| [Day 80](day80/) | Self-Correction |
+| [Day 81](day81/) | Context Engineering |
+| [Day 82](day82/) | Memory 系统 |
+| [Day 83](day83/) | State & Checkpoint |
+| [Day 84](day84/) | Multi-Agent |
+| [Day 85](day85/) | Agent 工作流 |
+| [Day 86](day86/) | Evaluation & Tracing |
+| [Day 87](day87/) | Agent 安全 |
+| [Day 88](day88/) | **项目：Agent Runtime①** |
+| [Day 89](day89/) | **项目：Agent Runtime②** |
+| [Day 90](day90/) | **毕业：Agent Runtime③** |
+
+---
+
+## 阶段性项目递进
+
+```
+Day 07:  CLI Todo（函数+异常+数据结构）
   ↓ 重构升级
-Day 12: 工具包化（模块+包结构）
-  ↓ OOP重构  
-Day 18: RPG游戏框架（完整OOP）
-  ↓ 高级特性加持
-Day 22: 中间件系统（装饰器+上下文管理器）
+Day 18:  RPG游戏框架（完整OOP体系）
   ↓ 工程化包装
-Day 28: API聚合服务（HTTP+asyncio）
-  ↓ AI集成
-Day 30: AI CLI Agent（毕业大作）
+Day 30:  AI CLI Assistant（AI基础）
+  ↓ 进入工程
+Day 50-52: REST API（FastAPI+DB+Auth）
+  ↓ 进入AI
+Day 74-75: 智能文档助手（RAG+Embedding）
+  ↓ 进入Agent
+Day 88-90: AI Agent Runtime（毕业大作）
 ```
 
-## ⚔️ Challenge 规则
+---
 
-每天有 **5个挑战**，难度递增：
-
-- **Challenge 1-2**: 当天知识的基础应用（必做）
-- **Challenge 3-4**: 综合应用，接近真实开发（必做）
-- **Challenge 5 (Boss)**: 当天最难任务，需要独立设计（挑战）
-
-### 挑战目录结构
+## 每日学习流程
 
 ```
-challenges/
-└── dayXX/
-    ├── challenge01/
-    │   ├── README.md    # 任务说明
-    │   └── starter.py   # 起步代码
-    ├── challenge02/
-    │   ├── README.md
-    │   └── starter.py
-    ├── ...
-    └── ultimate/
-        ├── README.md    # Boss挑战说明
-        └── starter.py   # 起步代码
-```
-
-## 📖 每日学习流程
-
-```
-1. 阅读 lesson.md（40分钟）
+1. 阅读 lesson.md（40-60分钟）
    - 理解知识点
    - 运行示例代码
    - 完成动手练习
 
-2. 完成 Challenges（60分钟）
+2. 完成 Challenges（60-90分钟）
    - Challenge 1 → 5 逐步推进
    - 每个Challenge先看README，用starter.py开始
    - 用tests/目录验证
 
-3. 复盘（20分钟）
+3. 复盘（15-20分钟）
    - 回顾今天学到什么
    - 标记不懂的地方
    - 预习明天的内容
 ```
 
-## 🎓 毕业标准
+---
+
+## Challenge 规则
+
+每天有 **5个挑战** + **1个Boss挑战**：
+
+- **Challenge 1-2**: 基础应用（必做）
+- **Challenge 3-4**: 综合应用（必做）
+- **Challenge 5 (Boss)**: 当天最难（挑战）
+
+每个挑战有独立的 `README.md` + `starter.py`。
+
+**starter.py 只有骨架，答案需要自己写。**
+
+---
+
+## 毕业标准
 
 完成以下全部要求即为毕业：
 
-- [ ] 30天的Challenge全部完成（包括Boss Challenge）
+- [ ] 90天的Challenge全部完成
 - [ ] 6个阶段性项目全部可运行
-- [ ] Day 30 毕业项目完成并通过验收
-- [ ] 代码有基本的错误处理
-- [ ] 代码有基本的测试覆盖
-- [ ] 能独立阅读和理解自己写的代码
+- [ ] Day 90 毕业项目：AI Agent Runtime 完成
+- [ ] Agent Runtime 支持：多轮对话、工具调用、Memory、Planning、Self-Correction、Context管理
+- [ ] 使用包结构（src/ layout）+ 类型注解 + 测试
+- [ ] 代码有完整的错误处理和安全护栏
 
-## ⚠️ 注意事项
+---
 
-1. **不要跳天**：知识是递进的，跳了后面会翻车
-2. **不要只看不写**：每天至少写2小时代码
-3. **不要抄答案**：starter.py只有骨架，答案需要自己填
-4. **卡住了先查文档**：培养独立解决问题的能力
-5. **每个测试都要跑**：tests/不是摆设
+## 快速开始
+
+```bash
+# 克隆仓库
+git clone https://github.com/LK-BLOG/python-90-days.git
+cd python-90-days
+
+# 从第一天开始
+cd day01
+# 打开 README.md 开始学习
+```
 
 ---
 

@@ -1,0 +1,58 @@
+version: \"3.8\"
+
+services:
+  api:
+    build: .
+    ports:
+      - \"8000:8000\"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db/blog
+      - REDIS_URL=redis://redis:6379
+      - SECRET_KEY=change-me-in-production
+      - APP_ENV=production
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=blog
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [\"CMD-SHELL\", \"pg_isready -U postgres\"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: [\"CMD\", \"redis-cli\", \"ping\"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  celery:
+    build: .
+    command: celery -A app.celery_app worker --loglevel=info
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db/blog
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+
+  celery-beat:
+    build: .
+    command: celery -A app.celery_app beat --loglevel=info
+    depends_on:
+      - redis
+
+volumes:
+  pgdata:
