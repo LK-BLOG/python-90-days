@@ -1,54 +1,34 @@
-# -*- coding: utf-8 -*-
-# 挑战五(Boss)：SQL查询构建器
+# Boss Challenge: 多格式报告生成器
+# Day 1 - 难度: ★★★★★
+#
+# 只用 Day 1 学到的函数参数知识。
+# 参考 README.md 了解具体要求。
 
-def where_clause(column, op, value):
-    """构建安全的WHERE条件片段"""
-    # TODO: 处理 =, !=, >, <, >=, <=, LIKE, IN, BETWEEN
-    # IN 需要生成 (?,?,?) 格式
-    # BETWEEN 需要两个参数
+def generate_report(title, headers, rows, format="text", separator=",", 
+                    show_total=False, sort_by=None, max_width=None):
+    """生成格式化报告"""
+    # TODO: 实现报告生成逻辑
     pass
 
 
-def build_query(table, columns="*", where=None, order_by=None,
-                limit=None, offset=None, group_by=None, having=None):
-    """构建SELECT查询，返回 (sql, params)"""
-    # TODO: 构建各部分并拼接
-    pass
-
-
-def build_insert(table, **data):
-    """构建INSERT语句"""
+def print_report(*columns, **options):
+    """打印报告的便捷接口"""
     # TODO
     pass
 
 
-def build_update(table, where, **set_values):
-    """构建UPDATE语句"""
-    # TODO
-    pass
-
-
-def build_delete(table, **conditions):
-    """构建DELETE语句"""
+def compare_reports(*reports, show_diff=False):
+    """对比多份报告"""
     # TODO
     pass
 
 
 if __name__ == "__main__":
-    sql, params = build_query("users", columns=["name", "email"],
-        where={"age": (">", 18), "status": ("=", "active")},
-        order_by="name", limit=10)
-    print(f"SQL: {sql}")
-    print(f"Params: {params}")
-
-    sql, params = build_insert("users", name="张三", age=25)
-    print(f"\nSQL: {sql}")
-    print(f"Params: {params}")
-
-    sql, params = build_update("users", {"id": 1}, name="李四", age=30)
-    print(f"\nSQL: {sql}")
-    print(f"Params: {params}")
-
-    sql, params = build_delete("users", id=1)
-    print(f"\nSQL: {sql}")
-    print(f"Params: {params}")
+    headers = ["Name", "Age", "Score"]
+    rows = [
+        ["Alice", 20, 85],
+        ["Bob", 22, 92],
+        ["Charlie", 20, 78],
+    ]
+    print("Boss Challenge: 多格式报告生成器")
+    print("请实现所有 TODO 方法")

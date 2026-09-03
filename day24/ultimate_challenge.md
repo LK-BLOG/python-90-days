@@ -88,8 +88,9 @@ pyproject-pro/
 - [ ] README.md 包含安装和使用说明
 
 ## 可选扩展
-- 添加 Dockerfile 和 docker-compose.yml
+- 添加 package|publish|buildfile 和 package|publish|build-compose.yml
 - 集成 pre-commit hooks
 - 添加 Sphinx 文档生成
 - 配置 dependabot
 - 添加代码覆盖率 badge
+

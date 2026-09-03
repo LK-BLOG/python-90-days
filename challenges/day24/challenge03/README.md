@@ -20,8 +20,8 @@
 - typecheck: 类型检查（mypy）
 - coverage: 生成覆盖率报告
 - docs: 生成文档
-- docker-build: 构建 Docker 镜像
-- docker-run: 运行 Docker 容器
+- package|publish|build: 构建 package|publish|build 镜像
+- package|publish|build: 运行 package|publish|build 容器
 - release: 发布到 PyPI
 
 ### 3. 智能功能
@@ -60,8 +60,8 @@ $ make help
   build          构建 wheel 和 sdist
   typecheck      运行 mypy 类型检查
   coverage       生成覆盖率报告
-  docker-build   构建 Docker 镜像
-  docker-run     运行 Docker 容器
+  package|publish|build   构建 package|publish|build 镜像
+  package|publish|build     运行 package|publish|build 容器
   release        发布到 PyPI
 ```
 
@@ -77,3 +77,4 @@ $ make help
 - 支持并行执行
 - 集成 pre-commit hooks
 - 支持自定义插件
+

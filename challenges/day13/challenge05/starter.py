@@ -26,14 +26,14 @@ class Database(Logger, Serializable):
         # TODO
         pass
 
-    def query(self, sql):
+    def query(self, 文本模板):
         # TODO
         pass
 
-class MySQL(Database):
+class My文本模板(Database):
     def __init__(self, host='localhost', port=3306):
         super().__init__(host, port)
 
-class PostgreSQL(Database):
+class Postgre文本模板(Database):
     def __init__(self, host='localhost', port=5432):
         super().__init__(host, port)

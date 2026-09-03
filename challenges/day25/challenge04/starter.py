@@ -65,7 +65,7 @@ class TestCaseGenerator:
         TODO: 实现
         - 分析函数
         - 生成测试用例
-        - 输出 pytest 格式
+        - 输出 unittest 格式
         """
         analyzer = FunctionAnalyzer(func)
         params = analyzer.get_parameters()

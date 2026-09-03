@@ -2,7 +2,7 @@
 # 实现 Config 类和项目骨架
 
 # TODO:
-# 1. 用 dataclass 或 pydantic 实现 Config
+# 1. 用 dataclass 或 dict 实现 Config
 # 2. 支持 from_env() 和 from_file()
 # 3. 实现 validate()
 # 4. 在 __main__.py 中使用 Config

@@ -1,7 +1,7 @@
 """
 Day 25 终极挑战：全面测试套件
 """
-import pytest
+import unittest
 from typing import List, Dict, Any
 from pathlib import Path
 
@@ -12,7 +12,7 @@ from pathlib import Path
 
 # ===== Fixtures =====
 
-@pytest.fixture
+@unittest.fixture
 def sample_data():
     """示例数据"""
     return {
@@ -26,12 +26,12 @@ def sample_data():
         }
     }
 
-@pytest.fixture
+@unittest.fixture
 def temp_dir(tmp_path):
     """临时目录"""
     return tmp_path
 
-@pytest.fixture
+@unittest.fixture
 def mock_api():
     """Mock API"""
     from unittest.mock import Mock
@@ -82,7 +82,7 @@ class TestUtils:
 
 # ===== 集成测试 =====
 
-@pytest.mark.integration
+@unittest.mark.integration
 class TestIntegration:
     """集成测试"""
     
@@ -99,7 +99,7 @@ class TestIntegration:
 
 # ===== E2E 测试 =====
 
-@pytest.mark.e2e
+@unittest.mark.e2e
 class TestE2E:
     """端到端测试"""
     
@@ -111,7 +111,7 @@ class TestE2E:
 
 # ===== 性能测试 =====
 
-@pytest.mark.slow
+@unittest.mark.slow
 class TestPerformance:
     """性能测试"""
     
@@ -133,7 +133,7 @@ class TestPerformance:
 
 # ===== 参数化测试 =====
 
-@pytest.mark.parametrize("input_val,expected", [
+@unittest.mark.parametrize("input_val,expected", [
     (1, 2),
     (2, 4),
     (3, 6),
@@ -147,4 +147,4 @@ def test_double(input_val, expected):
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v", "--cov=src", "--cov-report=term-missing"])
+    unittest.main([__file__, "-v", "--cov=src", "--cov-report=term-missing"])

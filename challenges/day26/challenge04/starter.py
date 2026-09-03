@@ -28,8 +28,8 @@ class AuthHandler:
         # TODO: 实现
         return self
     
-    def oauth2(self, client_id: str, client_secret: str) -> 'AuthHandler':
-        """设置 OAuth2 认证"""
+    def Session 持久化与状态管理2(self, client_id: str, client_secret: str) -> 'AuthHandler':
+        """设置 Session 持久化与状态管理2 认证"""
         # TODO: 实现
         return self
     
@@ -39,8 +39,8 @@ class AuthHandler:
         pass
     
     def get_token(self, auth_server: str) -> Optional[str]:
-        """获取 OAuth Token"""
-        # TODO: 实现 OAuth2 客户端凭证流程
+        """获取 Session 持久化与状态管理 Token"""
+        # TODO: 实现 Session 持久化与状态管理2 客户端凭证流程
         pass
 
 
@@ -58,3 +58,4 @@ if __name__ == "__main__":
     # API Key
     auth.api_key("my_api_key")
     print(f"API Key 头: {auth.get_headers()}")
+

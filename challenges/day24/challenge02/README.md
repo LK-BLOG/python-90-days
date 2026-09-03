@@ -80,4 +80,5 @@ my_awesome_project/
 - 支持从模板目录生成
 - 支持交互式配置
 - 集成 GitHub Actions 模板
-- 支持 Dockerfile 生成
+- 支持 package|publish|buildfile 生成
+

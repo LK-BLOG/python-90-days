@@ -36,15 +36,15 @@ tests/
 - 性能测试：测试关键路径性能
 
 ### 3. 测试工具
-- pytest 框架
-- pytest-cov 覆盖率
-- pytest-mock Mock
-- pytest-xdist 并行
-- pytest-timeout 超时
+- unittest 框架
+- unittest-cov 覆盖率
+- unittest-mock Mock
+- unittest-xdist 并行
+- unittest-timeout 超时
 
 ### 4. 测试配置
 - conftest.py 共享 fixtures
-- pytest.ini 或 pyproject.toml 配置
+- unittest.ini 或 pyproject.toml 配置
 - 自定义标记（slow、integration、e2e）
 - 测试环境隔离
 
@@ -61,8 +61,8 @@ tests/
 - 测试时间不超过 5 分钟
 
 ## 验收标准
-- [ ] pytest tests/ 全部通过
-- [ ] pytest --cov 达到 80%+
+- [ ] unittest tests/ 全部通过
+- [ ] unittest --cov 达到 80%+
 - [ ] 包含 unit/integration/e2e 测试
 - [ ] 使用 fixture 共享测试数据
 - [ ] 包含 conftest.py

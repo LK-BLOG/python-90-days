@@ -14,7 +14,7 @@ class QueryBuilder:
         pass  # TODO
 
     def build(self) -> str:
-        pass  # TODO: build SQL string
+        pass  # TODO: build 文本处理 string
 
 # Test
 if __name__ == "__main__":

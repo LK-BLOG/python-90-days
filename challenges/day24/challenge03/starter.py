@@ -16,7 +16,7 @@ MAKEFILE_TEMPLATE = """# 自动生成的 Makefile
 
 .PHONY: help install dev test lint format clean build \\
         typecheck coverage docs \\
-        docker-build docker-run release
+        package|publish|build package|publish|build release
 
 # 配置变量
 PYTHON ?= python
@@ -38,10 +38,10 @@ dev: ## 安装开发依赖
 \t$(PIP) install -e ".[dev]"
 
 test: ## 运行测试套件
-\t$(PYTHON) -m pytest $(TEST_DIR)/ -v --cov=$(SRC_DIR) --cov-report=term-missing
+\t$(PYTHON) -m unittest $(TEST_DIR)/ -v --cov=$(SRC_DIR) --cov-report=term-missing
 
 test-quick: ## 快速运行测试（不生成覆盖率）
-\t$(PYTHON) -m pytest $(TEST_DIR)/ -x -q
+\t$(PYTHON) -m unittest $(TEST_DIR)/ -x -q
 
 lint: format ## 代码质量检查
 \t$(PYTHON) -m black --check .
@@ -60,7 +60,7 @@ coverage: test ## 生成覆盖率报告
 \t@echo "覆盖率报告已生成: htmlcov/index.html"
 
 clean: ## 清理构建文件
-\trm -rf $(DIST_DIR) $(BUILD_DIR) *.egg-info .pytest_cache .mypy_cache
+\trm -rf $(DIST_DIR) $(BUILD_DIR) *.egg-info .unittest_cache .mypy_cache
 \trm -rf htmlcov .coverage
 \tfind . -type d -name __pycache__ -exec rm -rf {{}} + 2>/dev/null || true
 \tfind . -type f -name "*.pyc" -delete 2>/dev/null || true
@@ -80,11 +80,11 @@ upload: build ## 上传到 PyPI
 docs: ## 生成文档
 \t@echo "TODO: 实现文档生成"
 
-docker-build: ## 构建 Docker 镜像
-\tdocker build -t $(PROJECT_NAME):latest .
+package|publish|build: ## 构建 package|publish|build 镜像
+\tpackage|publish|build -t $(PROJECT_NAME):latest .
 
-docker-run: ## 运行 Docker 容器
-\tdocker run -it --rm $(PROJECT_NAME):latest
+package|publish|build: ## 运行 package|publish|build 容器
+\tpackage|publish|build -it --rm $(PROJECT_NAME):latest
 
 release: ## 发布新版本
 \t@echo "TODO: 实现发布流程"
@@ -173,7 +173,7 @@ def main():
     # 添加默认 targets
     generator.add_target("help", ["@echo '可用命令：'"], "显示帮助信息")
     generator.add_target("install", ["pip install -r requirements.txt"], "安装依赖")
-    generator.add_target("test", ["pytest tests/ -v"], "运行测试")
+    generator.add_target("test", ["unittest tests/ -v"], "运行测试")
     generator.add_target("lint", ["black --check .", "isort --check-only ."], "代码检查")
     generator.add_target("format", ["black .", "isort ."], "格式化代码")
     generator.add_target("clean", ["rm -rf dist/ build/"], "清理")
@@ -184,3 +184,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

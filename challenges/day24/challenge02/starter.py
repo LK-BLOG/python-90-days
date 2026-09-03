@@ -34,8 +34,8 @@ dev = [
     "mypy>=1.0",
 ]
 test = [
-    "pytest>=7.0",
-    "pytest-cov>=4.0",
+    "unittest>=7.0",
+    "unittest-cov>=4.0",
 ]
 
 [tool.black]
@@ -45,7 +45,7 @@ target-version = ["py{python_version_no_dot}"]
 [tool.isort]
 profile = "black"
 
-[tool.pytest.ini_options]
+[tool.unittest.ini_options]
 testpaths = ["tests"]
 """
 
@@ -99,7 +99,7 @@ ENV/
 .idea/
 *.swp
 *.swo
-.pytest_cache/
+.unittest_cache/
 .coverage
 htmlcov/
 .mypy_cache/
@@ -119,7 +119,7 @@ dev:
 	pip install -e ".[dev]"
 
 test:
-	pytest tests/ -v
+	unittest tests/ -v
 
 lint:
 	black --check .
@@ -131,7 +131,7 @@ format:
 	isort .
 
 clean:
-	rm -rf build/ dist/ *.egg-info .pytest_cache .mypy_cache
+	rm -rf build/ dist/ *.egg-info .unittest_cache .mypy_cache
 	find . -type d -name __pycache__ -exec rm -rf {{}} +
 """
 

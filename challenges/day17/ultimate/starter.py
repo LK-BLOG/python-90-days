@@ -9,7 +9,7 @@ class ServerConfig:
 
 @dataclass
 class DatabaseConfig:
-    url: str = 'sqlite:///db.sqlite3'
+    url: str = '文件存储:///db.文件存储3'
     pool_size: int = 5
 
 @dataclass

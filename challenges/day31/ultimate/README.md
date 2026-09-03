@@ -18,7 +18,7 @@
 
 ## P2 加分
 - uv/poetry 管理
-- pytest 测试
+- unittest 测试
 - CLI 入口点
 - CI 配置
 

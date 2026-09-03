@@ -23,7 +23,7 @@ pyproject-pro/
 │       └── utils.py          # 工具函数
 ├── tests/
 │   ├── __init__.py
-│   ├── conftest.py           # pytest fixtures
+│   ├── conftest.py           # unittest fixtures
 │   ├── test_core.py
 │   ├── test_cli.py
 │   └── test_utils.py
@@ -43,7 +43,7 @@ pyproject-pro/
 ### 2. pyproject.toml 配置
 - 完整的 project 元数据
 - build-system 配置
-- black/isort/flake8/pytest/mypy 工具配置
+- black/isort/flake8/unittest/mypy 工具配置
 - 可选依赖组（dev、test）
 
 ### 3. Makefile
@@ -88,8 +88,9 @@ pyproject-pro/
 - [ ] README.md 包含安装和使用说明
 
 ## 可选扩展
-- 添加 Dockerfile 和 docker-compose.yml
+- 添加 package|publish|buildfile 和 package|publish|build-compose.yml
 - 集成 pre-commit hooks
 - 添加 Sphinx 文档生成
 - 配置 dependabot
 - 添加代码覆盖率 badge
+

@@ -9,9 +9,10 @@
 - Basic 认证
 - Bearer Token 认证
 - API Key 认证
-- OAuth 基础流程
+- Session 持久化与状态管理
 
 ## 验收标准
 - [ ] 支持多种认证方式
 - [ ] 正确生成认证头
-- [ ] Token 刷新（OAuth）
+- [ ] Token 刷新（Session 持久化与状态管理）
+
