@@ -1,15 +1,17 @@
-# Day 85 挑战任务
-## 挑战 1: DAG 实现
-实现有向无环图的数据结构。
+# Day 85 Challenges
 
-## 挑战 2: 状态机
-实现状态转移和事件处理。
+## Challenge 1
+Implement Span/Trace/Context.
 
-## 挑战 3: Human-in-the-Loop
-实现审批等待和回调机制。
+## Challenge 2
+Implement Agent Tracing.
 
-## 挑战 4: 工作流引擎
-实现 DAG 的拓扑排序执行。
+## Challenge 3
+Implement Perf Monitor.
 
-## 挑战 5（Boss）: 完整工作流系统
-集成 DAG + 状态机 + Human-in-the-Loop。
+## Challenge 4
+Implement Cost Tracking.
+
+## Challenge 5
+Implement Observability.
+

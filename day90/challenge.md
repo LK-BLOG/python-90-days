@@ -1,34 +1,17 @@
-# Day 90 挑战任务
+# Day 90 Challenges
 
-## 🎓 毕业挑战
+## Challenge 1
+Implement Testing.
 
-### 挑战 1: 多 Agent 支持
-实现多 Agent 消息传递和协作。
+## Challenge 2
+Implement Docs.
 
-### 挑战 2: 评估系统
-实现运行时评估和质量监控。
+## Challenge 3
+Implement Packaging.
 
-### 挑战 3: 安全护栏
-实现完整的安全检查系统。
+## Challenge 4
+Implement Deployment.
 
-### 挑战 4: 测试套件
-编写完整的测试套件。
+## Challenge 5
+Implement Graduation.
 
-### 挑战 5（Boss）: 完整毕业项目
-集成所有组件，完成毕业验收。
-
-## 📋 毕业验收清单
-
-| # | 功能 | 状态 |
-|---|------|------|
-| 1 | Agent Loop 核心循环 | □ |
-| 2 | 工具注册系统 | □ |
-| 3 | Memory 系统 | □ |
-| 4 | Planning 模块 | □ |
-| 5 | Safety Guardrails | □ |
-| 6 | Evaluation 系统 | □ |
-| 7 | 多 Agent 支持 | □ |
-| 8 | 测试套件 | □ |
-| 9 | 文档 | □ |
-
-**全部完成后提交毕业验收！**

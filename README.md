@@ -150,7 +150,7 @@ Agent架构 → 工具系统 → Planning → Memory → 多Agent → 毕业项�
 
 ### Phase 4 — Agent Engineering (Day 76–90)
 
-最终阶段：独立设计和实现AI Agent。
+最终阶段：独立设计和实现AI Agent Runtime。
 
 | 天数 | 主题 |
 |------|------|
@@ -158,17 +158,17 @@ Agent架构 → 工具系统 → Planning → Memory → 多Agent → 毕业项�
 | [Day 77](day77/) | 工具系统 |
 | [Day 78](day78/) | 工具开发实战 |
 | [Day 79](day79/) | Planning & 目标分解 |
-| [Day 80](day80/) | Self-Correction |
-| [Day 81](day81/) | Context Engineering |
-| [Day 82](day82/) | Memory 系统 |
-| [Day 83](day83/) | State & Checkpoint |
-| [Day 84](day84/) | Multi-Agent |
-| [Day 85](day85/) | Agent 工作流 |
-| [Day 86](day86/) | Evaluation & Tracing |
-| [Day 87](day87/) | Agent 安全 |
-| [Day 88](day88/) | **项目：Agent Runtime①** |
-| [Day 89](day89/) | **项目：Agent Runtime②** |
-| [Day 90](day90/) | **毕业：Agent Runtime③** |
+| [Day 80](day80/) | Context Engineering |
+| [Day 81](day81/) | Memory 系统 |
+| [Day 82](day82/) | Agent State |
+| [Day 83](day83/) | Sandbox |
+| [Day 84](day84/) | Permission System |
+| [Day 85](day85/) | Trace |
+| [Day 86](day86/) | MCP |
+| [Day 87](day87/) | Multi-Agent |
+| [Day 88](day88/) | **Runtime Architecture** |
+| [Day 89](day89/) | **Runtime Implementation** |
+| [Day 90](day90/) | **毕业：Release & Graduation** |
 
 ---
 
@@ -185,7 +185,7 @@ Day 50-52: REST API（FastAPI+DB+Auth）
   ↓ 进入AI
 Day 74-75: 智能文档助手（RAG+Embedding）
   ↓ 进入Agent
-Day 88-90: AI Agent Runtime（毕业大作）
+Day 88-90: Agent Runtime + Release（毕业大作）
 ```
 
 ---
@@ -253,3 +253,4 @@ cd day01
 ---
 
 **开始你的第一天 → [Day 1: 函数参数](day01/)**
+

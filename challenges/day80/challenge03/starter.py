@@ -1,7 +1,28 @@
-# Day 80 - 挑战 3 骨架
-def solve():
-    # TODO: 实现 自我纠正器
-    pass
+from typing import List, Dict, Callable
 
-if __name__ == '__main__':
-    solve()
+class CompressionStrategy:
+    def compress(self, messages: List[Dict], target_tokens: int, count_fn: Callable) -> List[Dict]:
+        pass
+
+
+class SummaryCompression(CompressionStrategy):
+    def __init__(self):
+        pass
+    def compress(self, messages, target_tokens, count_fn):
+        pass
+
+
+class ExtractiveCompression(CompressionStrategy):
+    def compress(self, messages, target_tokens, count_fn):
+        pass
+
+
+class SmartCompression(CompressionStrategy):
+    def __init__(self, summary_threshold: float = 0.7):
+        pass
+    def compress(self, messages, target_tokens, count_fn):
+        pass
+
+
+if __name__ == "__main__":
+    pass

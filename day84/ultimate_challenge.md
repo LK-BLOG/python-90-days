@@ -1,8 +1,9 @@
-# Day 84 终极挑战：Multi-Agent 协作平台
-## 功能要求
-1. 消息总线（发布/订阅）
-2. Agent 基类 + 角色系统
-3. 顺序执行 + 并行执行 + 讨论模式
-4. Agent 注册和发现
-5. 对话历史和日志
-6. 死锁检测和超时处理
+# Boss: Perm Middleware
+
+## Requirements
+1. RBAC
+1. ABAC
+1. Tool Permission
+1. User Auth
+1. Inheritance
+1. Audit Log

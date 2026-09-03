@@ -1,15 +1,17 @@
-# Day 88 挑战任务
-## 挑战 1: Agent 核心循环
-实现完整的 Think → Act → Observe 循环。
+# Day 88 Challenges
 
-## 挑战 2: 工具注册
-将工具注册到 Agent 并自动调用。
+## Challenge 1
+Implement Overall Arch.
 
-## 挑战 3: 事件系统
-实现事件的发布/订阅机制。
+## Challenge 2
+Implement Module Split.
 
-## 挑战 4: 配置管理
-实现运行时配置的加载和验证。
+## Challenge 3
+Implement DI/Interfaces.
 
-## 挑战 5（Boss）: 完整 Agent Loop
-集成循环 + 工具 + 事件 + 配置。
+## Challenge 4
+Implement Config System.
+
+## Challenge 5
+Implement Plugin System.
+

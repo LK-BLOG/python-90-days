@@ -1,7 +1,1 @@
-# Day 84 - 挑战 2: Agent基类
-def solve():
-    # TODO: 实现 Agent基类
-    pass
-
-if __name__ == '__main__':
-    solve()
+# Challenge 2

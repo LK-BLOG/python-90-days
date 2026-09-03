@@ -1,7 +1,12 @@
-# Day 80 终极挑战骨架
-def solve():
-    # TODO: 终极挑战
+from typing import List, Dict, Optional
+
+class ProductionContextEngine:
+    def __init__(self, config: Dict = None):
+        pass
+
+    # TODO
     pass
 
-if __name__ == '__main__':
-    solve()
+
+if __name__ == "__main__":
+    pass

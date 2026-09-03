@@ -1,8 +1,9 @@
-# Day 85 终极挑战：Agent 工作流引擎
-## 功能要求
-1. DAG 工作流定义 + 拓扑排序
-2. 状态机转移
-3. 条件分支执行
-4. Human-in-the-Loop 审批
-5. 并行节点执行
-6. 错误处理和回滚
+# Boss: Observability Platform
+
+## Requirements
+1. Span/Trace/Context
+1. Agent Tracing
+1. Perf Monitor
+1. Cost Tracking
+1. Observability
+1. Distributed Trace

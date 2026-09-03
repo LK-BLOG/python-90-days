@@ -1,8 +1,9 @@
-# Day 87 终极挑战：Agent 安全平台
-## 功能要求
-1. 输入验证（注入检测/敏感信息）
-2. 输出安全（危险模式/内容过滤）
-3. 权限控制（RBAC/沙箱）
-4. Guardrails 规则引擎
-5. 红队测试套件
-6. 安全审计日志
+# Boss: Multi-Agent Framework
+
+## Requirements
+1. Collab Modes
+1. Communication
+1. Task Assignment
+1. Conflict Resolution
+1. Debugging
+1. Optimization

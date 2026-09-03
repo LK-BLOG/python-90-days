@@ -1,19 +1,11 @@
-# Day 90: Agent 项目 - AI Assistant Runtime ③ + 毕业
-## 🎯 项目目标
-- 多Agent支持、评估监控、安全护栏
-- 完整测试、文档、毕业验收
+# Day 90: Release
 
-## 🎓 毕业验收标准
-| 维度 | 分数 | 要求 |
-|------|------|------|
-| **功能完整** | 60分 | 核心引擎+工具+记忆+规划+安全+评估 全部可用 |
-| **代码质量** | 20分 | 结构清晰、类型安全、错误处理完善 |
-| **测试覆盖** | 20分 | 核心功能有测试，覆盖率>60% |
+## Topics
+- Testing
+- Docs
+- Packaging
+- Deployment
+- Graduation
+- Maintenance
 
-**总分 100 分，70 分以上通过毕业**
-
-## 📚 课程内容
-- [完整课程](lesson.md)
-## 🏋️ 练习
-- [挑战任务](challenge.md)
-- [终极挑战](ultimate_challenge.md)
+## Boss: Graduation Project

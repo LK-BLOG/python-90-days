@@ -1,15 +1,17 @@
-# Day 87 挑战任务
-## 挑战 1: 输入验证
-实现注入检测和敏感信息过滤。
+# Day 87 Challenges
 
-## 挑战 2: 输出安全
-实现危险模式检测和内容过滤。
+## Challenge 1
+Implement Collab Modes.
 
-## 挑战 3: 权限控制
-实现基于角色的权限系统。
+## Challenge 2
+Implement Communication.
 
-## 挑战 4: Guardrails
-实现可配置的规则引擎。
+## Challenge 3
+Implement Task Assignment.
 
-## 挑战 5（Boss）: 完整安全系统
-输入验证 + 输出过滤 + 权限 + 红队测试。
+## Challenge 4
+Implement Conflict Resolution.
+
+## Challenge 5
+Implement Debugging.
+

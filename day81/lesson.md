@@ -1,330 +1,333 @@
-# Day 81: Context Engineering
+# Day 81: Memory System — 完整知识点
 
-## 1. 上下文窗口管理
+## 1. 记忆系统概述
 
-### 1.1 为什么 Context Engineering 很重要？
+Agent的记忆系统模仿人类记忆的三层结构：
+```
+┌─────────────────────────────────────┐
+│ 短期记忆 (Short-term Memory)        │ ← 当前对话历史
+│ 保留在上下文窗口中，会话结束即丢失    │
+├─────────────────────────────────────┤
+│ 工作记忆 (Working Memory)           │ ← 当前任务状态
+│ Agent正在处理的任务信息，跨轮保持     │
+├─────────────────────────────────────┤
+│ 长期记忆 (Long-term Memory)         │ ← 持久化存储
+│ 向量数据库/知识图谱，跨会话保持       │
+└─────────────────────────────────────┘
+```
 
-LLM 的上下文窗口是有限的。Context Engineering 就是在有限空间里塞进最有价值的信息：
+## 2. 短期记忆：对话历史管理
 
-`
-总上下文窗口 = System Prompt + 历史对话 + 当前查询 + 工具结果 + 输出预留
-`
+```python
+from typing import List, Dict, Optional
+from datetime import datetime, timedelta
 
-如果超过窗口限制，旧的信息会被截断。管理不好就：
-- 关键信息被丢弃
-- Agent 忘记之前的决定
-- 工具调用结果被截断
+class ConversationMemory:
+    """短期记忆：管理当前会话的对话历史"""
 
-### 1.2 Token 计数器
-
-`python
-import tiktoken
-from typing import List, Dict
-
-
-class TokenCounter:
-    \"\"\"Token 计数和管理\"\"\"
-    
-    def __init__(self, model: str = "gpt-4"):
-        try:
-            self.enc = tiktoken.encoding_for_model(model)
-        except KeyError:
-            self.enc = tiktoken.get_encoding("cl100k_base")
-    
-    def count(self, text: str) -> int:
-        return len(self.enc.encode(text))
-    
-    def count_messages(self, messages: List[Dict]) -> int:
-        total = 0
-        for msg in messages:
-            total += self.count(msg.get("content", ""))
-            total += 4  # 每条消息的格式开销
-        return total
-    
-    def fit_to_budget(self, messages: List[Dict], budget: int) -> List[Dict]:
-        \"\"\"将消息列表裁剪到 token 预算内\"\"\"
-        # 保留 system prompt 和最后一条消息
-        if len(messages) <= 2:
-            return messages
-        
-        system = messages[0]
-        query = messages[-1]
-        history = messages[1:-1]
-        
-        system_tokens = self.count_messages([system])
-        query_tokens = self.count_messages([query])
-        remaining = budget - system_tokens - query_tokens - 100  # 100 token 余量
-        
-        # 从最新的消息开始保留
-        kept = []
-        used = 0
-        for msg in reversed(history):
-            msg_tokens = self.count_messages([msg])
-            if used + msg_tokens > remaining:
-                break
-            kept.insert(0, msg)
-            used += msg_tokens
-        
-        return [system] + kept + [query]
-`
-
-## 2. 上下文压缩与摘要
-
-`python
-class ContextCompressor:
-    \"\"\"上下文压缩器\"\"\"
-    
-    def __init__(self, max_tokens: int = 4000):
+    def __init__(self, max_turns: int = 50, max_tokens: int = 8000):
+        self.max_turns = max_turns
         self.max_tokens = max_tokens
-    
-    def compress_history(self, messages: List[Dict], llm=None) -> List[Dict]:
-        \"\"\"压缩对话历史\"\"\"
-        if not messages:
-            return messages
-        
-        # 策略1: 保留最近N条
-        if len(messages) > 10:
-            recent = messages[-5:]
-            old = messages[:-5]
-            
-            # 将旧消息摘要
-            summary = self._summarize(old, llm)
-            
-            return [
-                {"role": "system", "content": f"对话历史摘要: {summary}"}
-            ] + recent
-        
-        return messages
-    
-    def _summarize(self, messages: List[Dict], llm=None) -> str:
-        \"\"\"摘要旧消息\"\"\"
-        # 模拟摘要
-        topics = set()
-        for msg in messages:
-            content = msg.get("content", "")
-            if "搜索" in content:
-                topics.add("信息搜索")
-            if "代码" in content:
-                topics.add("代码编写")
-            if "分析" in content:
-                topics.add("数据分析")
-        
-        return "之前的对话涉及: " + ", ".join(topics) if topics else "无重要信息"
-    
-    def extract_key_info(self, messages: List[Dict]) -> Dict:
-        \"\"\"从消息中提取关键信息\"\"\"
-        key_info = {
-            "user_goal": "",
-            "decisions_made": [],
-            "tools_used": [],
-            "errors": [],
-        }
-        
-        for msg in messages:
-            content = msg.get("content", "")
-            role = msg.get("role", "")
-            
-            if role == "user" and not key_info["user_goal"]:
-                key_info["user_goal"] = content[:100]
-            
-            if "Tool:" in content:
-                tool_name = content.split("Tool:")[1].split("\n")[0].strip()
-                if tool_name not in key_info["tools_used"]:
-                    key_info["tools_used"].append(tool_name)
-            
-            if "错误" in content or "Error" in content:
-                key_info["errors"].append(content[:100])
-        
-        return key_info
-`
+        self.messages: List[Dict] = []
+        self.metadata: List[Dict] = []
 
-## 3. 动态 Prompt 注入
+    def add(self, role: str, content: str, **kwargs):
+        """添加一条消息"""
+        msg = {"role": role, "content": content, **kwargs}
+        self.messages.append(msg)
+        self.metadata.append({
+            "timestamp": datetime.now().isoformat(),
+            "token_estimate": len(content) // 3,
+            "importance": kwargs.get("importance", 0.5)
+        })
+        self._trim()
 
-`python
-class DynamicPromptBuilder:
-    \"\"\"动态构建 System Prompt\"\"\"
-    
+    def _trim(self):
+        """自动裁剪"""
+        # 按轮次裁剪
+        while len(self.messages) > self.max_turns:
+            self.messages.pop(0)
+            self.metadata.pop(0)
+        # 按Token裁剪
+        total = sum(m["token_estimate"] for m in self.metadata)
+        while total > self.max_tokens and len(self.messages) > 1:
+            removed = self.metadata.pop(0)
+            self.messages.pop(0)
+            total -= removed["token_estimate"]
+
+    def search(self, keyword: str) -> List[Dict]:
+        """关键词搜索历史消息"""
+        return [m for m in self.messages if keyword in m.get("content", "")]
+
+    def get_recent(self, n: int = 5) -> List[Dict]:
+        """获取最近n轮对话"""
+        return self.messages[-n*2:]  # 每轮=2条(user+assistant)
+
+    def get_messages(self) -> List[Dict]:
+        return self.messages.copy()
+
+    def clear(self):
+        self.messages.clear()
+        self.metadata.clear()
+```
+
+## 3. 长期记忆：向量存储
+
+### 3.1 向量相似度计算
+
+```python
+import math
+from typing import List
+
+def cosine_similarity(a: List[float], b: List[float]) -> float:
+    """余弦相似度"""
+    dot = sum(x * y for x, y in zip(a, b))
+    norm_a = math.sqrt(sum(x * x for x in a))
+    norm_b = math.sqrt(sum(x * x for x in b))
+    if norm_a == 0 or norm_b == 0:
+        return 0.0
+    return dot / (norm_a * norm_b)
+
+def simple_embedding(text: str, dim: int = 128) -> List[float]:
+    """简易文本嵌入（基于字符频率的哈希）"""
+    import hashlib
+    vec = [0.0] * dim
+    for i, char in enumerate(text):
+        h = int(hashlib.md5(f"{char}{i}".encode()).hexdigest(), 16)
+        idx = h % dim
+        vec[idx] += 1.0
+        # 归一化
+    norm = math.sqrt(sum(x * x for x in vec))
+    if norm > 0:
+        vec = [x / norm for x in vec]
+    return vec
+```
+
+### 3.2 向量存储
+
+```python
+class VectorStore:
+    """简易向量数据库"""
+
+    def __init__(self, dimension: int = 128):
+        self.dimension = dimension
+        self.vectors: List[List[float]] = []
+        self.documents: List[Dict] = []
+        self.ids: List[str] = []
+
+    def add(self, doc_id: str, text: str, metadata: Dict = None):
+        """添加文档"""
+        embedding = simple_embedding(text, self.dimension)
+        self.ids.append(doc_id)
+        self.vectors.append(embedding)
+        self.documents.append({
+            "id": doc_id,
+            "text": text,
+            "metadata": metadata or {}
+        })
+
+    def search(self, query: str, top_k: int = 5) -> List[Dict]:
+        """语义搜索"""
+        query_vec = simple_embedding(query, self.dimension)
+        scores = []
+        for i, vec in enumerate(self.vectors):
+            score = cosine_similarity(query_vec, vec)
+            scores.append((score, i))
+        scores.sort(reverse=True)
+        results = []
+        for score, idx in scores[:top_k]:
+            result = self.documents[idx].copy()
+            result["score"] = score
+            results.append(result)
+        return results
+
+    def delete(self, doc_id: str):
+        if doc_id in self.ids:
+            idx = self.ids.index(doc_id)
+            self.ids.pop(idx)
+            self.vectors.pop(idx)
+            self.documents.pop(idx)
+
+    def update(self, doc_id: str, text: str, metadata: Dict = None):
+        self.delete(doc_id)
+        self.add(doc_id, text, metadata)
+
+    def count(self) -> int:
+        return len(self.ids)
+```
+
+## 4. 知识图谱
+
+```python
+from collections import defaultdict
+from typing import Set, Tuple
+
+class KnowledgeGraph:
+    """简易知识图谱"""
+
     def __init__(self):
-        self.base_prompt = "你是一个智能助手。"
-        self.sections = {}
-        self.priority_order = ["tools", "context", "constraints", "examples"]
-    
-    def add_section(self, name: str, content: str, priority: int = 0):
-        self.sections[name] = {"content": content, "priority": priority}
-    
-    def build(self, token_budget: int = 4000) -> str:
-        \"\"\"在 token 预算内构建最优 prompt\"\"\"
-        sections = sorted(
-            self.sections.items(),
-            key=lambda x: x[1]["priority"],
-            reverse=True
-        )
-        
-        prompt = self.base_prompt
-        used_tokens = len(prompt) // 4  # 粗略估计
-        
-        for name, info in sections:
-            section_text = f"\n\n## {name}\n{info['content']}"
-            section_tokens = len(section_text) // 4
-            
-            if used_tokens + section_tokens < token_budget - 200:  # 预留输出
-                prompt += section_text
-                used_tokens += section_tokens
-            else:
-                # 尝试截断
-                remaining_tokens = token_budget - used_tokens - 200
-                if remaining_tokens > 50:
-                    truncated = info['content'][:remaining_tokens * 4]
-                    prompt += f"\n\n## {name} (部分)\n{truncated}..."
-                    break
-        
-        return prompt
-    
-    def inject_dynamic_context(self, task: str, available_tools: list) -> str:
-        \"\"\"根据当前任务动态注入上下文\"\"\"
-        context = self.base_prompt
-        
-        # 只注入相关的工具描述
-        relevant_tools = [t for t in available_tools if self._is_relevant(t, task)]
-        if relevant_tools:
-            tool_desc = "\n".join([
-                f"- {t['name']}: {t['description']}"
-                for t in relevant_tools[:5]  # 限制工具数量
-            ])
-            context += f"\n\n可用工具:\n{tool_desc}"
-        
-        return context
-    
-    def _is_relevant(self, tool: dict, task: str) -> bool:
-        # 简单相关性检查
-        task_lower = task.lower()
-        return any(kw in task_lower for kw in tool['name'].lower().split('_'))
-`
+        self.entities: Dict[str, Dict] = {}
+        self.edges: List[Tuple[str, str, str, Dict]] = []  # (head, relation, tail, meta)
+        self.adjacency: Dict[str, List] = defaultdict(list)  # entity -> [(relation, neighbor)]
 
-## 4. System Prompt 工程
+    def add_entity(self, name: str, entity_type: str = "generic", **props):
+        self.entities[name] = {"type": entity_type, **props}
 
-`python
-class SystemPromptEngineer:
-    \"\"\"System Prompt 工程器\"\"\"
-    
-    @staticmethod
-    def build_agent_prompt(
-        role: str,
-        tools: list,
-        constraints: list = None,
-        examples: list = None
-    ) -> str:
-        \"\"\"构建 Agent 的 System Prompt\"\"\"
-        prompt = f"""# 角色
-你是一个{role}。
+    def add_relation(self, head: str, relation: str, tail: str, **props):
+        self.edges.append((head, relation, tail, props))
+        self.adjacency[head].append((relation, tail))
+        self.adjacency[tail].append((f"inverse_{relation}", head))
 
-# 能力
-"""
-        
-        # 工具描述
-        if tools:
-            prompt += "你可以使用以下工具:\n"
-            for t in tools:
-                prompt += f"- **{t['name']}**: {t['description']}\n"
-                if 'params' in t:
-                    prompt += f"  参数: {t['params']}\n"
-        
-        # 约束
-        if constraints:
-            prompt += "\n# 约束\n"
-            for c in constraints:
-                prompt += f"- {c}\n"
-        
-        # 示例
-        if examples:
-            prompt += "\n# 示例\n"
-            for i, ex in enumerate(examples):
-                prompt += f"\n## 示例 {i+1}\n"
-                prompt += f"用户: {ex['input']}\n"
-                prompt += f"助手: {ex['output']}\n"
-        
-        # 输出格式
-        prompt += """
-# 输出格式
-每次行动前，先输出你的思考（Thought），然后执行行动（Action）。
-格式:
-Thought: [你的分析]
-Action: [工具名](参数)
-"""
-        
-        return prompt
-    
-    @staticmethod
-    def optimize_for_task(prompt: str, task_type: str) -> str:
-        \"\"\"针对特定任务类型优化 prompt\"\"\"
-        optimizations = {
-            "coding": "重点: 代码质量、错误处理、类型安全",
-            "analysis": "重点: 数据准确性、逻辑严谨、结论有据",
-            "creative": "重点: 原创性、多样性、用户偏好",
-        }
-        
-        if task_type in optimizations:
-            prompt += f"\n\n# 任务重点\n{optimizations[task_type]}"
-        
-        return prompt
-`
+    def get_neighbors(self, entity: str, relation: str = None) -> List[Tuple[str, str]]:
+        """获取邻居"""
+        if entity not in self.adjacency:
+            return []
+        if relation:
+            return [(r, n) for r, n in self.adjacency[entity] if r == relation]
+        return self.adjacency[entity]
 
-## 5. 上下文窗口策略
+    def bfs(self, start: str, max_depth: int = 3) -> Dict[str, int]:
+        """广度优先搜索"""
+        visited = {start: 0}
+        queue = [start]
+        while queue:
+            current = queue.pop(0)
+            depth = visited[current]
+            if depth >= max_depth:
+                continue
+            for _, neighbor in self.adjacency[current]:
+                if neighbor not in visited:
+                    visited[neighbor] = depth + 1
+                    queue.append(neighbor)
+        return visited
 
-`python
-class ContextWindowStrategy:
-    \"\"\"上下文窗口管理策略\"\"\"
-    
-    STRATEGIES = {
-        "sliding_window": "滑动窗口 - 只保留最近N条",
-        "summarize_old": "摘要旧消息 - 压缩历史",
-        "keep_important": "重要性过滤 - 只保留关键信息",
-        "hierarchical": "层次化 - 按重要性分层保留",
-    }
-    
-    def __init__(self, strategy: str = "sliding_window", max_messages: int = 20):
-        self.strategy = strategy
-        self.max_messages = max_messages
-    
-    def apply(self, messages: list) -> list:
-        if self.strategy == "sliding_window":
-            return self._sliding_window(messages)
-        elif self.strategy == "summarize_old":
-            return self._summarize_old(messages)
-        elif self.strategy == "keep_important":
-            return self._keep_important(messages)
-        return messages
-    
-    def _sliding_window(self, messages: list) -> list:
-        if len(messages) <= self.max_messages:
-            return messages
-        return messages[-self.max_messages:]
-    
-    def _summarize_old(self, messages: list) -> list:
-        if len(messages) <= 10:
-            return messages
-        old = messages[:-5]
-        recent = messages[-5:]
-        summary = f"之前{len(old)}轮对话的摘要: 讨论了{len(old)}个话题"
-        return [{"role": "system", "content": summary}] + recent
-    
-    def _keep_important(self, messages: list) -> list:
-        important = [m for m in messages if m.get("role") == "user" or "Tool:" in m.get("content", "")]
-        if len(important) > self.max_messages:
-            return important[-self.max_messages:]
-        return important
-`
+    def find_path(self, start: str, end: str, max_depth: int = 5) -> Optional[List[str]]:
+        """查找两点间路径"""
+        if start == end:
+            return [start]
+        visited = {start}
+        queue = [(start, [start])]
+        while queue:
+            current, path = queue.pop(0)
+            if len(path) > max_depth:
+                continue
+            for _, neighbor in self.adjacency[current]:
+                if neighbor == end:
+                    return path + [neighbor]
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append((neighbor, path + [neighbor]))
+        return None
 
-## 6. 常见错误
+    def query_triple(self, head: str = None, relation: str = None, tail: str = None):
+        """三元组查询"""
+        results = []
+        for h, r, t, meta in self.edges:
+            if head and h != head:
+                continue
+            if relation and r != relation:
+                continue
+            if tail and t != tail:
+                continue
+            results.append((h, r, t, meta))
+        return results
+```
 
-1. **System Prompt 太长**：占了大半窗口 → 精简，只保留必要信息
-2. **不压缩历史**：对话越来越长直到溢出 → 定期摘要
-3. **工具描述重复**：同一工具描述出现多次 → 去重
-4. **信息优先级错误**：关键信息被截断 → 高优先级放前面
-5. **没有 Token 预算**：不知道还能塞多少 → 用 TokenCounter 监控
+## 5. MemGPT模式的记忆管理
 
-## 7. 动手练习
+MemGPT的核心思想：像操作系统管理内存一样管理LLM的上下文。
 
-### 练习 1：实现 Token 计数器
-### 练习 2：实现上下文压缩器
-### 练习 3：实现动态 Prompt 构建器
+```python
+class MemGPTMemory:
+    """
+    MemGPT风格的记忆系统
+    - Main Context: 当前上下文窗口（相当于RAM）
+    - Archival Storage: 归档存储（相当于磁盘）
+    """
+
+    def __init__(self, main_context_size: int = 8000):
+        self.main_context_size = main_context_size
+        self.main_context: List[Dict] = []  # 主记忆
+        self.archival: List[Dict] = []      # 归档记忆
+        self.conversation_history: List[Dict] = []  # 对话历史
+        self.working_context: Dict = {}     # 工作上下文
+
+    def insert_to_main(self, content: str, source: str = "user"):
+        """插入到主记忆"""
+        self.main_context.append({
+            "type": "memory",
+            "content": content,
+            "source": source,
+            "timestamp": __import__('datetime').datetime.now().isoformat()
+        })
+
+    def append_to_archive(self, content: str, metadata: Dict = None):
+        """归档到长期存储"""
+        self.archival.append({
+            "content": content,
+            "metadata": metadata or {},
+            "timestamp": __import__('datetime').datetime.now().isoformat()
+        })
+
+    def search_archive(self, query: str, top_k: int = 3) -> List[Dict]:
+        """在归档中搜索"""
+        # 简单关键词匹配（实际应用中用向量检索）
+        results = []
+        for item in self.archival:
+            if any(word in item["content"] for word in query.split()):
+                results.append(item)
+        return results[:top_k]
+
+    def conversation_search(self, query: str) -> List[Dict]:
+        """搜索对话历史"""
+        results = []
+        for msg in self.conversation_history:
+            if query.lower() in msg.get("content", "").lower():
+                results.append(msg)
+        return results
+
+    def core_memory_replace(self, old: str, new: str):
+        """替换核心记忆"""
+        for ctx in self.main_context:
+            if old in ctx["content"]:
+                ctx["content"] = ctx["content"].replace(old, new)
+
+    def get_system_prompt(self) -> str:
+        """生成包含记忆的系统提示"""
+        parts = []
+        # 核心记忆
+        if self.main_context:
+            memories = "\n".join(m["content"] for m in self.main_context)
+            parts.append(f"## 核心记忆\n{memories}")
+        # 工作上下文
+        if self.working_context:
+            ctx = "\n".join(f"- {k}: {v}" for k, v in self.working_context.items())
+            parts.append(f"## 当前工作\n{ctx}")
+        return "\n\n".join(parts)
+```
+
+## 6. 实际应用
+
+### 6.1 聊天机器人的记忆
+- 短期：当前对话的滑动窗口
+- 长期：用户偏好、过往需求的向量存储
+- 工作：当前话题、用户情绪状态
+
+### 6.2 RAG中的记忆
+- 短期：检索结果缓存
+- 长期：知识库（文档向量存储）
+- 工作：当前查询的上下文
+
+### 6.3 多Agent协作的记忆
+- 共享长期记忆（全局知识）
+- 私有短期记忆（各自对话）
+- 协作工作记忆（共享任务状态）
+
+## 7. 常见错误
+| 错误 | 后果 | 正确做法 |
+|------|------|---------|
+| 不清理旧记忆 | Token溢出 | 滑动窗口+压缩 |
+| 向量维度太低 | 检索不准确 | 至少128维 |
+| 不持久化 | 会话间丢失 | 存到文件/数据库 |
+| 记忆没有优先级 | 关键信息被丢弃 | 重要性评分 |
+| 搜索不分层 | 效率低 | 短期/长期分开搜 |

@@ -1,7 +1,24 @@
-# Day 80 - 挑战 4 骨架
-def solve():
-    # TODO: 实现 重试策略
-    pass
+from typing import List, Dict, Callable
 
-if __name__ == '__main__':
-    solve()
+class SmartWindow:
+    def __init__(self, max_tokens: int, count_fn: Callable = None):
+        pass
+
+    def add(self, role: str, content: str):
+        pass
+
+    def _score(self, msg: Dict, idx: int, total: int) -> float:
+        pass
+
+    def select(self) -> List[Dict]:
+        pass
+
+    def get_messages(self) -> List[Dict]:
+        return self.select()
+
+    def stats(self) -> Dict:
+        pass
+
+
+if __name__ == "__main__":
+    pass

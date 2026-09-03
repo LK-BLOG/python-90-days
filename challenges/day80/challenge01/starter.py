@@ -1,9 +1,21 @@
-# Day 80 - 挑战 1: Reflexion循环
-## 骨架代码
+from typing import Optional
 
-# TODO: 实现 Reflexion循环
-def solve():
-    pass
+class TokenCounter:
+    """你的Token计数器实现"""
 
-if __name__ == '__main__':
-    solve()
+    def __init__(self, method: str = "approximate"):
+        pass
+
+    def count(self, text: str) -> int:
+        pass
+
+    def remaining(self, used: int, budget: int = 4096) -> int:
+        pass
+
+    def fits_budget(self, text: str, budget: int = 4096) -> bool:
+        pass
+
+
+if __name__ == "__main__":
+    counter = TokenCounter("approximate")
+    print(counter.count("测试文本"))

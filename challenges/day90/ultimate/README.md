@@ -1,4 +1,1 @@
-# Day 90 - 终极挑战
-## 终极任务: 毕业项目
-
-集成 Runtime③+毕业 的所有知识点，构建完整的子系统。
+# Boss: Graduation Project

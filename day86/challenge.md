@@ -1,15 +1,17 @@
-# Day 86 挑战任务
-## 挑战 1: Agent 评估器
-实现多维度的评估系统。
+# Day 86 Challenges
 
-## 挑战 2: Trace 系统
-实现 Span 和追踪树。
+## Challenge 1
+Implement MCP Architecture.
 
-## 挑战 3: 成本追踪
-实现 Token 和费用追踪。
+## Challenge 2
+Implement MCP Server.
 
-## 挑战 4: 可观测性面板
-集成所有组件到统一面板。
+## Challenge 3
+Implement MCP Client.
 
-## 挑战 5（Boss）: 完整评估监控系统
-评估 + 追踪 + 成本 + 仪表板。
+## Challenge 4
+Implement Tool Standardization.
+
+## Challenge 5
+Implement MCP Ecosystem.
+

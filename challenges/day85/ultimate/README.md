@@ -1,4 +1,1 @@
-# Day 85 - 终极挑战
-## 终极任务: 完整工作流系统
-
-集成 工作流 的所有知识点，构建完整的子系统。
+# Boss: Observability Platform
