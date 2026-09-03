@@ -34,7 +34,7 @@
 - Basic 认证
 - Bearer Token 认证
 - API Key 认证
-- OAuth 基础流程
+- Session 持久化（本地存储Cookie/Session状态）
 
 ## 挑战 5：HTTP 客户端
 **难度：** ⭐⭐⭐⭐
@@ -58,3 +58,4 @@
 - 超时和重试机制
 - 文件上传/下载
 - Session 管理
+

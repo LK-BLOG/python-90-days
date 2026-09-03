@@ -1,42 +1,56 @@
-# 挑战五(Boss)：SQL查询构建器
+# 挑战五(Boss)：函数式数据管道
 
 ## 难度
 ★★★★★
 
 ## 目标
-用函数参数构建灵活、安全的SQL查询语句。
+用函数参数系统构建一个灵活的数据处理管道。
 
 ## 背景
-SQL注入是Web安全第一大威胁。你需要构建一个安全的SQL构建器。
+数据处理是Python最常见的用途之一。你需要用纯函数和参数组合，构建一个可复用的数据管道系统。
 
 ## 功能要求
 
 ### 核心函数
 ```python
-def build_query(table, columns="*", where=None, order_by=None,
-                limit=None, offset=None, group_by=None, having=None)
+def pipeline(data, *operations, **config)
 ```
+接收数据和多个处理操作，按顺序执行并返回结果。
 
-### 辅助函数
+### 操作函数
 ```python
-def build_insert(table, **data)
-def build_update(table, where, **set_values)
-def build_delete(table, **conditions)
-def where_clause(column, op, value)
+def op_filter(data, condition=None, key=None)
+def op_map(data, func=None, key=None)
+def op_sort(data, key=None, reverse=False)
+def op_group(data, key=None, agg=None)
+def op_limit(data, n=10)
+def op_unique(data, key=None)
 ```
 
-### 参数绑定
-使用 `?` 占位符，返回 (sql_string, params_list)
+### 参数设计
+- 每个操作函数必须使用 *args 和 **kwargs 灵活接收参数
+- 支持链式调用：pipeline(data).filter(...).map(...).sort(...).result()
+- 操作可组合、可复用
 
 ## 示例
 ```python
-sql, params = build_query("users", columns=["name"], where={"age": (">", 18)}, limit=10)
-# "SELECT name FROM users WHERE age > ? LIMIT 10", [18]
+students = [
+    {"name": "Alice", "age": 20, "score": 85},
+    {"name": "Bob", "age": 22, "score": 92},
+    {"name": "Charlie", "age": 20, "score": 78},
+]
+
+result = pipeline(students,
+    op_filter(key="age", condition=lambda x: x >= 20),
+    op_sort(key="score", reverse=True),
+    op_limit(n=2),
+)
+# [{"name": "Bob", ...}, {"name": "Alice", ...}]
 ```
 
 ## 验收标准
-1. ✅ SELECT/INSERT/UPDATE/DELETE正确
-2. ✅ WHERE支持多种运算符
-3. ✅ 参数绑定用占位符
-4. ✅ JOIN支持
-5. ✅ UNION组合查询
+1. ✅ pipeline 函数支持 *args 和 **kwargs
+2. ✅ 所有操作函数参数设计灵活
+3. ✅ 链式调用接口可用
+4. ✅ 支持嵌套数据操作
+5. ✅ 有完整的使用示例和测试

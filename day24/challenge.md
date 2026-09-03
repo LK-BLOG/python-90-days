@@ -36,7 +36,7 @@ my_project/
 **难度：** ⭐⭐
 
 为一个已有的 Python 项目编写完整的 Makefile，支持：
-- install、dev、test、lint、format、clean、build、docker-build、docker-run 等目标
+- install、dev、test、lint、format、clean、build、package、publish 等目标
 - help 目标自动列出所有可用命令
 
 ## 挑战 4：配置文件解析器
@@ -69,3 +69,4 @@ my_project/
 - 完整文档（README.md）
 - 版本管理（CHANGELOG.md）
 - 代码质量工具集成
+
