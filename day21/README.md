@@ -1,35 +1,36 @@
-# Day 21: 装饰器
+# Day 21：迭代器
 
-## 今日概览
-| 项目 | 内容 |
-|------|------|
-| **主题** | 装饰器原理、带参装饰器、类装饰器、实用装饰器 |
-| **难度** | ⭐⭐⭐⭐ 中高级 |
-| **前置知识** | Day 19-20（迭代器/生成器）、Day 17（闭包） |
-| **预计时间** | 4-5 小时 |
+## 今天只解决什么
 
-## 学习目标
-  - 理解闭包 -> 装饰器的演进路径
-  - 编写无参/带参装饰器，掌握 functools.wraps
-  - 理解类装饰器与装饰器叠加顺序
-  - 掌握 property/staticmethod/classmethod
-  - 构建实用装饰器（@timer/@debug/@retry/@cache/@validate）
+实现一个自定义分页迭代器。
 
-## 文件结构
-```
-day21/
-  README.md              # 本文件
-  lesson.md              # 详细课程
-  challenge.md           # 挑战说明
-  ultimate_challenge.md  # Boss挑战
-  examples/              # 示例代码
-  starter/               # 练习起步代码
-  tests/                 # 测试用例
-```
+## 前置
 
-## 学习路线
-1. 先读 lesson.md
-2. 运行 examples/ 下的示例
-3. 完成 starter/ 中的练习
-4. 挑战 challenges/day21/ 下的5个关卡
-5. Boss战: HTTP请求装饰器系统（@rate_limit/@cache/@retry/@log/@authenticate，可叠加）
+先完成 Day 20。
+
+## 今天学什么
+
+- 可迭代对象
+- iter
+- next
+- __iter__
+- __next__
+
+## 今天不要提前学
+
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
+
+## 执行顺序
+
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
+
+## 完成标准
+
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

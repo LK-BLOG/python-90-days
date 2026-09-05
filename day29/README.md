@@ -1,55 +1,35 @@
-# Day 29: AI + Agent — 从调用API到构建智能体
+# Day 29：LLM API 与工具调用入门
 
-## 🎯 今日目标
+## 今天只解决什么
 
-1. 理解LLM API基础（OpenAI格式、Chat Completion）
-2. 掌握Prompt Engineering核心技巧
-3. 学会Function Calling / Tool Use
-4. 理解Memory系统设计
-5. 掌握Agent架构（ReAct模式）
+写一个离线模拟的工具调用循环。
 
-## 📚 学习路径
+## 前置
 
-| 模块 | 内容 | 时间 |
-|------|------|------|
-| Lesson | LLM API + Prompt + Function Calling + Agent | 核心学习 |
-| Challenge 1 | 调用OpenAI API，实现基础对话 | 30min |
-| Challenge 2 | Prompt Engineering实战 | 30min |
-| Challenge 3 | Function Calling工具调用 | 45min |
-| Challenge 4 | Memory系统实现 | 45min |
-| Challenge 5 | 多工具Agent | 45min |
-| Boss挑战 | 完整AI助手Agent | 120min |
+先完成 Day 28。
 
-## 🏗️ 项目结构
+## 今天学什么
 
-`
-day29/
-├── README.md           # 本文件
-├── lesson.md           # 详细课程内容
-├── challenge.md        # 挑战说明
-├── ultimate_challenge.md # Boss挑战说明
-├── examples/           # 示例代码
-├── starter/            # 起始代码
-└── tests/              # 测试用例
-`
+- 消息列表
+- Prompt
+- 工具描述
+- 对话历史
 
-## 🔧 环境准备
+## 今天不要提前学
 
-`ash
-pip install openai httpx aiohttp
-export OPENAI_API_KEY="your-key-here"
-`
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
 
-## ⚡ 今日哲学
+## 执行顺序
 
-> "AI不是魔法，是一连串的API调用+精心设计的prompt+工程化的工具链。
-> 理解了这三层，你就能构建任何AI应用。"
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
 
-## 📖 前置回顾
+## 完成标准
 
-到今天为止，你已经掌握了：
-- Python核心语法和高级特性（Day 1-15）
-- 工程化开发能力（Day 16-20）
-- HTTP、API、asyncio（Day 21-28）
-
-今天是把这些全部串联起来，用AI作为大脑，构建真正有用的智能系统。
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

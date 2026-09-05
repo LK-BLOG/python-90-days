@@ -1,49 +1,35 @@
-# Day 24: Python 工程化
+# Day 24：上下文管理器
 
-## 📋 学习目标
+## 今天只解决什么
 
-完成今天的学习后，你将能够：
-- 使用 pip 管理 Python 包和依赖
-- 创建和管理虚拟环境
-- 理解 pyproject.toml 和现代 Python 打包
-- 搭建标准 Python 项目结构
-- 配置代码质量工具（black、isort、flake8）
-- 使用 Makefile 和 tox 简化开发流程
+实现计时器或文件事务上下文。
 
-## 📚 学习内容
+## 前置
 
-| 模块 | 内容 | 文件 |
-|------|------|------|
-| pip 包管理 | install/freeze/list/uninstall/requirements.txt | lesson.md |
-| 虚拟环境 | venv 创建、激活、管理 | lesson.md |
-| 项目打包 | pyproject.toml、setuptools、项目结构 | lesson.md |
-| 代码质量 | black、isort、flake8 配置与使用 | lesson.md |
-| 开发工具 | Makefile、tox、.gitignore | lesson.md |
+先完成 Day 23。
 
-## 🎯 挑战任务
+## 今天学什么
 
-| 挑战 | 名称 | 难度 |
-|------|------|------|
-| Challenge 01 | 依赖管理器 | ⭐⭐ |
-| Challenge 02 | 项目脚手架生成器 | ⭐⭐⭐ |
-| Challenge 03 | Makefile 构建系统 | ⭐⭐ |
-| Challenge 04 | 配置文件解析器 | ⭐⭐⭐ |
-| Challenge 05 | 代码质量检查器 | ⭐⭐⭐ |
-| Ultimate | 专业工程结构重构 | ⭐⭐⭐⭐ |
+- with
+- __enter__
+- __exit__
+- contextmanager
 
-## ⏰ 建议时间
+## 今天不要提前学
 
-- 理论学习：3-4 小时
-- 练习 + 挑战：4-5 小时
-- Boss 挑战：2-3 小时
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
 
-## 🔑 核心概念速查
+## 执行顺序
 
-```
-pip install requests          # 安装包
-pip freeze > requirements.txt # 导出依赖
-python -m venv myenv          # 创建虚拟环境
-black .                       # 格式化代码
-isort .                       # 排序 import
-flake8 .                      # 代码检查
-```
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
+
+## 完成标准
+
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

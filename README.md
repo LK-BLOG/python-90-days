@@ -54,40 +54,40 @@ Agent架构 → 工具系统 → Planning → Memory → 多Agent → 毕业项�
 
 ### Phase 1 — Python Core & Advanced Python (Day 01–30)
 
-快速掌握Python核心，进入高级领域。
+先补齐“能把需求写成函数”的能力，再进入高级 Python。不会把闭包、递归、SQL、Agent 塞进第一天。
 
 | 天数 | 主题 |
 |------|------|
-| [Day 01](day01/) | 函数参数 |
-| [Day 02](day02/) | 函数高级 |
-| [Day 03](day03/) | 作用域与闭包 |
-| [Day 04](day04/) | 字符串高级 |
-| [Day 05](day05/) | 数据结构进阶 |
-| [Day 06](day06/) | 异常处理 |
-| [Day 07](day07/) | **项目：CLI Todo** |
-| [Day 08](day08/) | 文件 I/O |
-| [Day 09](day09/) | JSON |
-| [Day 10](day10/) | pathlib + os |
-| [Day 11](day11/) | 模块系统 |
-| [Day 12](day12/) | Package |
-| [Day 13](day13/) | OOP 深入① |
-| [Day 14](day14/) | OOP 深入② |
-| [Day 15](day15/) | OOP 深入③ |
-| [Day 16](day16/) | 魔术方法 |
-| [Day 17](day17/) | dataclass |
-| [Day 18](day18/) | **项目：RPG游戏框架** |
-| [Day 19](day19/) | 迭代器 |
-| [Day 20](day20/) | 生成器 |
-| [Day 21](day21/) | 装饰器 |
-| [Day 22](day22/) | 上下文管理器 |
-| [Day 23](day23/) | 类型系统 |
-| [Day 24](day24/) | pip & 工程化 |
-| [Day 25](day25/) | Debug + 测试 |
-| [Day 26](day26/) | HTTP 协议 |
-| [Day 27](day27/) | API 实战 |
-| [Day 28](day28/) | asyncio 异步编程 |
-| [Day 29](day29/) | AI + Agent 基础 |
-| [Day 30](day30/) | **项目：AI CLI Assistant** |
+| [Day 01](day01/) | 函数最小闭环：参数、return 与字典增改 |
+| [Day 02](day02/) | 函数里的循环与列表 |
+| [Day 03](day03/) | 位置参数、关键字参数与默认参数 |
+| [Day 04](day04/) | *args、**kwargs 与参数解包 |
+| [Day 05](day05/) | 字符串拼接、join 与文本格式化 |
+| [Day 06](day06/) | 错误处理：让函数不乱崩 |
+| [Day 07](day07/) | 项目①：报告与配置小工具 |
+| [Day 08](day08/) | 文件读写：把数据保存下来 |
+| [Day 09](day09/) | JSON：保存 Python 数据 |
+| [Day 10](day10/) | 路径与文件管理 |
+| [Day 11](day11/) | 模块：拆开你的代码 |
+| [Day 12](day12/) | Package：组织一个小工具包 |
+| [Day 13](day13/) | 类与对象：用对象保存状态 |
+| [Day 14](day14/) | 继承与多态 |
+| [Day 15](day15/) | 封装、property、类方法 |
+| [Day 16](day16/) | 魔术方法与自定义容器 |
+| [Day 17](day17/) | dataclass 与类型提示入门 |
+| [Day 18](day18/) | 项目②：RPG 核心 |
+| [Day 19](day19/) | 作用域：变量到底在哪里 |
+| [Day 20](day20/) | 高阶函数、lambda 与闭包 |
+| [Day 21](day21/) | 迭代器 |
+| [Day 22](day22/) | 生成器 |
+| [Day 23](day23/) | 装饰器 |
+| [Day 24](day24/) | 上下文管理器 |
+| [Day 25](day25/) | 测试与调试 |
+| [Day 26](day26/) | 工程化：虚拟环境、依赖与项目结构 |
+| [Day 27](day27/) | HTTP 与同步 API |
+| [Day 28](day28/) | 异步：asyncio |
+| [Day 29](day29/) | LLM API 与工具调用入门 |
+| [Day 30](day30/) | 项目③：CLI AI 助手最小版 |
 
 ### Phase 2 — Python Engineering (Day 31–60)
 

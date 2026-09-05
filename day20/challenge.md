@@ -1,20 +1,29 @@
-# Day 20 Challenges
+# Day 20：挑战顺序
 
-### Challenge 01: Generator Countdown
-Implement countdown using yield instead of class iterator.
+> 今天的挑战必须按顺序完成。每题只增加一个新动作。
 
-### Challenge 02: Fibonacci Generator
-Generate fibonacci numbers using a generator function.
+## 挑战 1（★☆☆☆☆）
 
-### Challenge 03: Generator Pipeline
-Build a pipeline: read words -> filter short -> uppercase.
+围绕 **函数变量** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Challenge 04: Coroutine Accumulator
-Implement an accumulator coroutine using send().
+## 挑战 2（★★☆☆☆）
 
-### Challenge 05: yield from Flatten
-Use yield from to flatten arbitrarily nested lists.
+围绕 **函数参数** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Boss: ETL Data Pipeline
-Build an Extract-Transform-Load pipeline using generator chains.
-Support CSV/JSON data, cleaning, transformation, aggregation, output.
+## 挑战 3（★★★☆☆）
+
+围绕 **lambda** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 4（★★★★☆）
+
+围绕 **nonlocal** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 5（★★★★★）
+
+围绕 **闭包** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 终极挑战（★★★★★）
+
+写一个可配置的计数器或数据处理器。
+
+终极挑战不是新知识；它只是把今天前 5 题已经做过的动作组合起来。

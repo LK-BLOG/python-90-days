@@ -1,22 +1,29 @@
-# Day 19 Challenge
+# Day 19：挑战顺序
 
-## 5 Challenges + 1 Boss Battle
+> 今天的挑战必须按顺序完成。每题只增加一个新动作。
 
-### Challenge 01: Range Iterator
-Create a custom range iterator that supports start, stop, step.
+## 挑战 1（★☆☆☆☆）
 
-### Challenge 02: Sliding Window Iterator
-Implement an iterator that yields sliding windows of size n.
+围绕 **局部变量** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Challenge 03: Chunk Iterator
-Split an iterable into chunks of size n.
+## 挑战 2（★★☆☆☆）
 
-### Challenge 04: Flatten Iterator
-Flatten nested lists of arbitrary depth.
+围绕 **全局变量** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Challenge 05: Zip Longest Iterator
-Implement zip_longest from scratch using itertools concept.
+## 挑战 3（★★★☆☆）
 
-### Boss: Log Stream Processor
-Process GB-scale log files line by line with filtering, aggregation, grouping.
-Memory must remain constant regardless of file size.
+围绕 **LEGB** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 4（★★★★☆）
+
+围绕 **global** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 5（★★★★★）
+
+围绕 **局部变量** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 终极挑战（★★★★★）
+
+修复一组作用域错误。
+
+终极挑战不是新知识；它只是把今天前 5 题已经做过的动作组合起来。

@@ -1,72 +1,36 @@
-# Day 30: 毕业项目 — AI CLI Assistant / Agent
+# Day 30：项目③：CLI AI 助手最小版
 
-## 🎓 毕业日
+## 今天只解决什么
 
-恭喜你走到了最后一天。今天不是上课，是**实战**。
+完成可运行的 CLI 助手最小版本。
 
-你要把过去29天学到的所有东西——Python语法、OOP、装饰器、上下文管理器、asyncio、类型注解、测试、工程化、HTTP、API——全部整合到一个**真正可用的AI助手项目**中。
+## 前置
 
-## 🎯 项目目标
+先完成 Day 29。
 
-构建一个 i_assistant Python包，包含：
-- CLI交互界面
-- AI对话（多轮，流式输出）
-- 工具系统（文件读写、Shell执行、Python代码执行、网络搜索）
-- Memory系统（对话历史、上下文控制、摘要压缩）
-- 配置管理
-- 插件式工具注册
-- 完整测试
+## 今天学什么
 
-## 📚 学习路径
+- 模块组合
+- API 客户端
+- 工具
+- Memory
+- 测试
 
-| 模块 | 内容 | 时间 |
-|------|------|------|
-| Lesson | 架构设计指南 + 设计模式 + 模块详解 | 架构学习 |
-| Challenge 1 | 搭建项目骨架 + 配置系统 | 45min |
-| Challenge 2 | 工具注册系统 + 2个工具 | 60min |
-| Challenge 3 | Memory系统 | 45min |
-| Challenge 4 | Agent核心循环 + AI引擎 | 60min |
-| Challenge 5 (Boss) | 完整功能 + 高级特性 | 180min |
+## 今天不要提前学
 
-## 🏗️ 目录结构
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
 
-`
-ai_assistant/
-├── pyproject.toml
-├── README.md
-├── src/
-│   └── ai_assistant/
-│       ├── __init__.py
-│       ├── __main__.py
-│       ├── cli.py
-│       ├── core/
-│       ├── tools/
-│       ├── memory/
-│       ├── config/
-│       └── utils/
-└── tests/
-`
+## 执行顺序
 
-## ⚡ 毕业标准
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
 
-完成Challenge 5后，你的项目应该：
-1. python -m ai_assistant 可以启动
-2. 能进行多轮AI对话
-3. 至少4个工具能调用
-4. Memory管理对话历史
-5. 配置从文件/环境变量读取
-6. 所有模块有类型注解
-7. 测试通过
-8. **不是单文件**——是真正的包结构
+## 完成标准
 
-## 🔧 环境准备
-
-`ash
-pip install openai httpx aiohttp
-export OPENAI_API_KEY="your-key-here"
-`
-
-## 💡 记住
-
-> 这不是一个简单的练习。这是一个你可以在简历上写的真实项目。
-> 写好了，它是你Python能力的最佳证明。
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

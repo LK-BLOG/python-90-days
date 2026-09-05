@@ -1,38 +1,35 @@
-# Day 26: HTTP 协议
+# Day 26：工程化：虚拟环境、依赖与项目结构
 
-## 📋 学习目标
+## 今天只解决什么
 
-完成今天的学习后，你将能够：
-- 理解 HTTP 协议的核心概念
-- 使用 urllib/http.request 手写 HTTP 请求
-- 理解请求方法、状态码、Headers
-- 处理 Cookie/Session
-- 实现认证（Basic/Bearer Token）
-- 理解 SSL/TLS 基础
-- 编写简单的 HTTP 客户端
+把一个项目整理为标准工程目录。
 
-## 📚 学习内容
+## 前置
 
-| 模块 | 内容 |
-|------|------|
-| HTTP 基础 | 请求方法、状态码、Headers、Body |
-| 请求实战 | GET/POST/PUT/DELETE |
-| 高级特性 | Cookie/Session、认证、SSL |
-| 手写客户端 | urllib/http.request 实现 |
+先完成 Day 25。
 
-## 🎯 挑战任务
+## 今天学什么
 
-| 挑战 | 名称 | 难度 |
-|------|------|------|
-| Challenge 01 | HTTP 请求构造器 | ⭐⭐ |
-| Challenge 02 | 响应解析器 | ⭐⭐ |
-| Challenge 03 | Cookie 管理器 | ⭐⭐⭐ |
-| Challenge 04 | 认证管理器 | ⭐⭐⭐ |
-| Challenge 05 | HTTP 客户端 | ⭐⭐⭐⭐ |
-| 🏆 Ultimate | 完整 HTTP 客户端库 | ⭐⭐⭐⭐⭐ |
+- venv
+- pip
+- requirements
+- pyproject
 
-## ⏰ 建议时间
+## 今天不要提前学
 
-- 理论学习：2-3 小时
-- 练习 + 挑战：4-5 小时
-- Boss 挑战：3-4 小时
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
+
+## 执行顺序
+
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
+
+## 完成标准
+
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

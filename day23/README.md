@@ -1,35 +1,35 @@
-# Day 23: 类型系统
+# Day 23：装饰器
 
-## 今日概览
-| 项目 | 内容 |
-|------|------|
-| **主题** | Type Hints、泛型、Protocol、TypedDict、mypy |
-| **难度** | ⭐⭐⭐⭐ 中高级 |
-| **前置知识** | Day 1-22 全部内容 |
-| **预计时间** | 3-4 小时 |
+## 今天只解决什么
 
-## 学习目标
-  - 掌握 type hints 基础（函数注解、变量注解）
-  - 理解内置类型标注 list[dict[str, int]]
-  - 使用 Optional/Union/Type 复合类型
-  - 掌握 TypeVar 泛型与 Protocol 结构子类型
-  - 使用 TypedDict 和类型安全设计模式
+实现 timer、debug、retry。
 
-## 文件结构
-```
-day23/
-  README.md              # 本文件
-  lesson.md              # 详细课程
-  challenge.md           # 挑战说明
-  ultimate_challenge.md  # Boss挑战
-  examples/              # 示例代码
-  starter/               # 练习起步代码
-  tests/                 # 测试用例
-```
+## 前置
 
-## 学习路线
-1. 先读 lesson.md
-2. 运行 examples/ 下的示例
-3. 完成 starter/ 中的练习
-4. 挑战 challenges/day23/ 下的5个关卡
-5. Boss战: 给RPG项目添加完整类型注解，编写类型安全的API接口
+先完成 Day 22。
+
+## 今天学什么
+
+- 闭包回顾
+- @decorator
+- wraps
+- 带参数装饰器
+
+## 今天不要提前学
+
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
+
+## 执行顺序
+
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
+
+## 完成标准
+
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

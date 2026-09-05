@@ -1,20 +1,29 @@
-# Day 22 Challenges
+# Day 22：挑战顺序
 
-### Challenge 01: Transaction Manager
-Implement commit/rollback context manager.
+> 今天的挑战必须按顺序完成。每题只增加一个新动作。
 
-### Challenge 02: Timer Context
-Measure block execution time.
+## 挑战 1（★☆☆☆☆）
 
-### Challenge 03: Suppress Context
-Implement exception suppression.
+围绕 **yield** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Challenge 04: Database Connection
-Simulate DB connection with auto-commit/rollback.
+## 挑战 2（★★☆☆☆）
 
-### Challenge 5: Resource Pool
-Manage multiple resources with ExitStack.
+围绕 **生成器表达式** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Boss: Resource Management Middleware
-DB connection pool + logging context + timer + retry.
-All using context managers + decorators.
+## 挑战 3（★★★☆☆）
+
+围绕 **yield from** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 4（★★★★☆）
+
+围绕 **流式处理** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 5（★★★★★）
+
+围绕 **yield** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 终极挑战（★★★★★）
+
+用生成器处理大文本文件。
+
+终极挑战不是新知识；它只是把今天前 5 题已经做过的动作组合起来。

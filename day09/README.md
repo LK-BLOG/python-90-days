@@ -1,50 +1,35 @@
-# Day 9: JSON
+# Day 09：JSON：保存 Python 数据
 
-## 🎯 今日目标
-掌握JSON数据处理，学会序列化/反序列化，处理复杂数据结构。
+## 今天只解决什么
 
-## 📚 知识点
-- json.load/dump/load loads/dumps
-- 自定义JSONEncoder/Decoder
-- 数据序列化/反序列化
-- JSON Schema基础验证
-- 处理循环引用
-- 日期时间序列化
+给报告工具加 JSON 保存/读取。
 
-## 🛠️ 实践项目
-- JSON数据验证器
-- 数据格式转换器
-- 配置文件管理器
+## 前置
 
-## 📁 目录结构
-```
-day9/
-├── README.md          # 本文件
-├── lesson.md          # 完整知识点教学
-├── challenge.md       # 挑战概述
-├── ultimate_challenge.md # Boss挑战
-├── examples/          # 示例代码
-├── starter/           # 骨架代码
-└── tests/             # 测试文件
-```
+先完成 Day 08。
 
-## ⏰ 学习建议
-1. 理解JSON与Python数据类型的对应关系
-2. 掌握自定义编解码器
-3. 学习数据验证方法
-4. 处理特殊数据类型
+## 今天学什么
 
-## 🚀 开始学习
-```bash
-# 查看今日内容
-cat day9/lesson.md
+- json.dump
+- json.load
+- 列表和字典
+- 持久化
 
-# 运行示例
-python day9/examples/json_basics.py
+## 今天不要提前学
 
-# 完成挑战
-# 编辑 day9/starter/json_handler.py
-```
+只完成今天的内容。后面的高级主题会在对应日期正式出现。
 
----
-**JSON是数据交换的标准格式，务必熟练掌握！**
+## 执行顺序
+
+1. 先读 `lesson.md` 的“最小版本”；
+2. 运行 `examples/`；
+3. 完成 `starter/` 中对应挑战；
+4. 自己增加两个输入测试；
+5. 将最终成品保存到 `code/`。
+
+## 完成标准
+
+- [ ] 能解释每个函数的输入和输出；
+- [ ] 能自己运行测试；
+- [ ] 能处理至少一个错误输入；
+- [ ] 不复制答案也能重新写出核心函数。

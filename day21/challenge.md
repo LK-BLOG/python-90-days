@@ -1,20 +1,29 @@
-# Day 21 Challenges
+# Day 21：挑战顺序
 
-### Challenge 01: @timer Decorator
-Measure and print execution time.
+> 今天的挑战必须按顺序完成。每题只增加一个新动作。
 
-### Challenge 02: @retry Decorator
-Retry failed function calls.
+## 挑战 1（★☆☆☆☆）
 
-### Challenge 03: @cache Decorator
-Implement memoization.
+围绕 **可迭代对象** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Challenge 04: @validate Decorator
-Validate function arguments.
+## 挑战 2（★★☆☆☆）
 
-### Challenge 05: Decorator Factory
-Create a decorator factory with multiple options.
+围绕 **iter** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Boss: HTTP Request Decorator System
-Build @rate_limit, @cache, @retry, @log, @authenticate decorators.
-Support stacking/composition.
+## 挑战 3（★★★☆☆）
+
+围绕 **next** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 4（★★★★☆）
+
+围绕 **__iter__** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 5（★★★★★）
+
+围绕 **__next__** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 终极挑战（★★★★★）
+
+实现一个自定义分页迭代器。
+
+终极挑战不是新知识；它只是把今天前 5 题已经做过的动作组合起来。

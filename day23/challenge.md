@@ -1,20 +1,29 @@
-# Day 23 Challenges
+# Day 23：挑战顺序
 
-### Challenge 01: Add Type Hints
-Add type hints to untyped functions.
+> 今天的挑战必须按顺序完成。每题只增加一个新动作。
 
-### Challenge 02: Generic Container
-Implement a generic typed container.
+## 挑战 1（★☆☆☆☆）
 
-### Challenge 03: Protocol Design
-Design a Protocol-based plugin system.
+围绕 **闭包回顾** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Challenge 04: TypedDict Models
-Create TypedDict models for API responses.
+## 挑战 2（★★☆☆☆）
 
-### Challenge 05: Type-Safe Builder
-Implement a type-safe query builder.
+围绕 **@decorator** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
 
-### Boss: RPG Type Annotations
-Add complete type annotations to the RPG project.
-Write type-safe API interfaces.
+## 挑战 3（★★★☆☆）
+
+围绕 **wraps** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 4（★★★★☆）
+
+围绕 **带参数装饰器** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 挑战 5（★★★★★）
+
+围绕 **闭包回顾** 写一个小函数。先保证输入、输出和一个测试都能跑，再写下一题。
+
+## 终极挑战（★★★★★）
+
+实现 timer、debug、retry。
+
+终极挑战不是新知识；它只是把今天前 5 题已经做过的动作组合起来。
