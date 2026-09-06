@@ -1,35 +1,23 @@
-# Day 02：函数高级 —— 挑战1
+# Day 2 挑战一：显示背包物品
 # 难度：★☆☆☆☆
-# 请先阅读同一天的 challenge.md，再实现下面的骨架。
-
-from typing import Any, Iterable, Optional
+# 目标：遍历列表，把每个物品打印出来。
 
 
-class Solution:
-    """基础接口实现的挑战1解决方案骨架。"""
+def show_items(items):
+    """逐个打印背包里的物品。
 
-    def __init__(self, data: Optional[Iterable[Any]] = None) -> None:
-        self.data = list(data or [])
-        self.result: Any = None
-
-    def validate_input(self) -> None:
-        """验证输入类型、必填字段和边界条件。"""
-        # TODO：按照题目要求补充具体校验。
-        pass
-
-    def execute(self, **options: Any) -> Any:
-        """执行主要流程并返回结果。"""
-        self.validate_input()
-        # TODO：实现核心逻辑；必要时拆分辅助函数或方法。
-        self.result = self.data
-        return self.result
-
-
-def solve(data: Iterable[Any], **options: Any) -> Any:
-    """便于测试和复用的函数入口。"""
-    return Solution(data).execute(**options)
+    输入：['药水', '木剑', '盾牌']
+    输出：
+        1. 药水
+        2. 木剑
+        3. 盾牌
+    """
+    # TODO：用 range(len(items)) 遍历列表
+    # TODO：用下标取出每个物品
+    # TODO：打印编号和物品名称
+    pass
 
 
 if __name__ == '__main__':
-    print('Day 02：函数高级 —— 挑战1')
-    print('请完成 validate_input() 和 execute()，再把成品放进 code/。')
+    bag = ['药水', '木剑', '盾牌']
+    show_items(bag)

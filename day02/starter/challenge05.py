@@ -1,35 +1,38 @@
-# Day 02：函数高级 —— 挑战5
+# Day 2 挑战五：背包管理器
 # 难度：★★★★★
-# 请先阅读同一天的 challenge.md，再实现下面的骨架。
-
-from typing import Any, Iterable, Optional
+# 目标：综合列表、字典、for、append、remove、函数拆分。
 
 
-class Solution:
-    """工程化验收的挑战5解决方案骨架。"""
-
-    def __init__(self, data: Optional[Iterable[Any]] = None) -> None:
-        self.data = list(data or [])
-        self.result: Any = None
-
-    def validate_input(self) -> None:
-        """验证输入类型、必填字段和边界条件。"""
-        # TODO：按照题目要求补充具体校验。
-        pass
-
-    def execute(self, **options: Any) -> Any:
-        """执行主要流程并返回结果。"""
-        self.validate_input()
-        # TODO：实现核心逻辑；必要时拆分辅助函数或方法。
-        self.result = self.data
-        return self.result
+def add_item(items, name, kind, price, count=1):
+    """创建物品字典并加入背包。"""
+    # TODO：创建 {'name': name, 'kind': kind, 'price': price, 'count': count}
+    # TODO：加入 items 并返回 items
+    pass
 
 
-def solve(data: Iterable[Any], **options: Any) -> Any:
-    """便于测试和复用的函数入口。"""
-    return Solution(data).execute(**options)
+def find_item(items, name):
+    """按名称查找第一个物品，找不到返回 None。"""
+    # TODO：遍历 items，比较 item['name']
+    pass
+
+
+def remove_item_by_name(items, name):
+    """按名称删除物品，成功返回 True，找不到返回 False。"""
+    # TODO：先调用 find_item
+    # TODO：找到后从 items 删除
+    pass
+
+
+def print_inventory(items):
+    """逐行打印背包内容。"""
+    # TODO：遍历 items，打印名称、类型、价格、数量
+    pass
 
 
 if __name__ == '__main__':
-    print('Day 02：函数高级 —— 挑战5')
-    print('请完成 validate_input() 和 execute()，再把成品放进 code/。')
+    bag = []
+    add_item(bag, '治疗药水', '消耗品', 30, 2)
+    add_item(bag, '木剑', '武器', 50, 1)
+    print_inventory(bag)
+    print('找到：', find_item(bag, '木剑'))
+    print('删除成功：', remove_item_by_name(bag, '治疗药水'))

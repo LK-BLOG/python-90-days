@@ -1,35 +1,34 @@
-# Day 02：函数高级 —— 挑战3
+# Day 2 挑战三：筛选物品
 # 难度：★★★☆☆
-# 请先阅读同一天的 challenge.md，再实现下面的骨架。
-
-from typing import Any, Iterable, Optional
+# 目标：从列表中的字典筛选出符合条件的新列表。
 
 
-class Solution:
-    """模块化重构的挑战3解决方案骨架。"""
+def get_expensive_items(items, minimum_price):
+    """返回价格大于等于 minimum_price 的物品。
 
-    def __init__(self, data: Optional[Iterable[Any]] = None) -> None:
-        self.data = list(data or [])
-        self.result: Any = None
+    输入：
+        items = [
+            {'name': '药水', 'price': 30},
+            {'name': '木剑', 'price': 50},
+        ]
+        minimum_price = 40
 
-    def validate_input(self) -> None:
-        """验证输入类型、必填字段和边界条件。"""
-        # TODO：按照题目要求补充具体校验。
-        pass
+    返回：
+        [{'name': '木剑', 'price': 50}]
+    """
+    result = []
 
-    def execute(self, **options: Any) -> Any:
-        """执行主要流程并返回结果。"""
-        self.validate_input()
-        # TODO：实现核心逻辑；必要时拆分辅助函数或方法。
-        self.result = self.data
-        return self.result
-
-
-def solve(data: Iterable[Any], **options: Any) -> Any:
-    """便于测试和复用的函数入口。"""
-    return Solution(data).execute(**options)
+    # TODO：遍历 items
+    # TODO：读取 item['price']
+    # TODO：符合条件时把 item append 到 result
+    # TODO：返回 result
+    pass
 
 
 if __name__ == '__main__':
-    print('Day 02：函数高级 —— 挑战3')
-    print('请完成 validate_input() 和 execute()，再把成品放进 code/。')
+    bag = [
+        {'name': '药水', 'price': 30},
+        {'name': '木剑', 'price': 50},
+        {'name': '盾牌', 'price': 80},
+    ]
+    print(get_expensive_items(bag, 50))

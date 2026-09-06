@@ -1,35 +1,28 @@
-# Day 02：函数高级 —— 挑战2
+# Day 2 挑战二：添加和删除背包物品
 # 难度：★★☆☆☆
-# 请先阅读同一天的 challenge.md，再实现下面的骨架。
-
-from typing import Any, Iterable, Optional
+# 目标：练习 append、remove 和列表返回值。
 
 
-class Solution:
-    """边界与错误处理的挑战2解决方案骨架。"""
-
-    def __init__(self, data: Optional[Iterable[Any]] = None) -> None:
-        self.data = list(data or [])
-        self.result: Any = None
-
-    def validate_input(self) -> None:
-        """验证输入类型、必填字段和边界条件。"""
-        # TODO：按照题目要求补充具体校验。
-        pass
-
-    def execute(self, **options: Any) -> Any:
-        """执行主要流程并返回结果。"""
-        self.validate_input()
-        # TODO：实现核心逻辑；必要时拆分辅助函数或方法。
-        self.result = self.data
-        return self.result
+def add_item(items, item):
+    """添加一个物品，并返回修改后的列表。"""
+    # TODO：使用 append(item)
+    # TODO：返回 items
+    pass
 
 
-def solve(data: Iterable[Any], **options: Any) -> Any:
-    """便于测试和复用的函数入口。"""
-    return Solution(data).execute(**options)
+def remove_item(items, item):
+    """删除一个物品。
+
+    如果物品不存在，不要让程序崩溃，直接返回原列表。
+    """
+    # TODO：先判断 item 是否在 items 中
+    # TODO：存在时使用 remove(item)
+    # TODO：返回 items
+    pass
 
 
 if __name__ == '__main__':
-    print('Day 02：函数高级 —— 挑战2')
-    print('请完成 validate_input() 和 execute()，再把成品放进 code/。')
+    bag = ['药水', '木剑']
+    print(add_item(bag, '盾牌'))
+    print(remove_item(bag, '药水'))
+    print(remove_item(bag, '不存在的物品'))
