@@ -1,32 +1,29 @@
-# Day 1 挑战五：简单文本表格
-# 难度：★★★★★
+# Day 1 挑战五：逐行打印报告
+# 难度：★★★☆☆
+#
+# 只使用：普通参数、列表、for、print。
+# 先不要用 *args、**kwargs、join、字典、类。
 
 
-def format_table(*headers, rows):
-    """把表头和二维数据格式化成简单文本表格。
+def print_report(title, names, scores):
+    """打印一份最简单的成绩报告。
 
-    示例：
-        format_table(
-            "姓名", "年龄", "城市",
-            rows=[("Alice", 25, "北京"), ("Bob", 30, "上海")]
-        )
+    参数：
+        title: 报告标题，例如 "数学成绩"
+        names: 姓名列表，例如 ["小明", "小红"]
+        scores: 分数列表，例如 [90, 85]
 
-    返回：
-        姓名 | 年龄 | 城市
-        Alice | 25 | 北京
-        Bob | 30 | 上海
+    输出示例：
+        数学成绩
+        小明：90分
+        小红：85分
     """
-    lines = []
-
-    # TODO：先把 headers 用 " | " 连成第一行，加入 lines。
-    # TODO：遍历 rows；每一行先把数字转成字符串，再用 " | " 连起来。
-    # TODO：最后 return "\n".join(lines)
+    # TODO：打印 title
+    # TODO：用一个 for 循环按下标同时取出 names 和 scores
+    # 提示：range(len(names))
+    # TODO：打印“姓名：分数分”
     pass
 
 
 if __name__ == "__main__":
-    table = format_table(
-        "姓名", "年龄", "城市",
-        rows=[("Alice", 25, "北京"), ("Bob", 30, "上海")],
-    )
-    print(table)
+    print_report("数学成绩", ["小明", "小红"], [90, 85])
