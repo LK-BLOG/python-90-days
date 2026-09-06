@@ -1,227 +1,204 @@
-# Day 3：函数参数设计
+# Day 3：字符串与文本处理
 
-今天的主题不是“记住几种写法”，而是学会设计一个别人容易调用的函数。
+## 1. 字符串索引和切片
 
-## 1. 位置参数
-
-### 知识点
-
-函数定义中的参数，调用时按照位置对应。
+字符串可以通过下标读取单个字符，也可以切出一段。
 
 ```python
-def create_user(name, age):
-    return {"name": name, "age": age}
-
-user = create_user("小戡", 9)
-print(user)
+text = "Python"
+print(text[0])
+print(text[-1])
+print(text[0:3])
+print(text[::2])
 ```
 
-第一个值给 `name`，第二个值给 `age`。
-
-### 常见错误
+字符串不能直接修改：
 
 ```python
-create_user("小戡")
-# TypeError：少了 age
+# text[0] = "J"  # 错误
+text = "J" + text[1:]
 ```
 
+动手练习：取出一段身份证号的前六位和后四位。
+
+## 2. 清理字符串
+
 ```python
-create_user("小戡", 9, "北京")
-# TypeError：多了参数
+text = "  Hello Python  "
+print(text.strip())
+print(text.lower())
+print(text.upper())
 ```
 
-### 动手练习
+实际文本经常有多余空格、大小写不一致和换行，需要先清理再分析。
 
-写 `create_item(name, price, count)`，返回包含三个字段的字典。
-
-## 2. 关键字参数
-
-### 知识点
-
-调用时写出参数名，顺序可以改变。
+## 3. `split()`：拆分
 
 ```python
-def create_user(name, age, city):
-    return {"name": name, "age": age, "city": city}
-
-user = create_user(age=9, city="北京", name="小戡")
-print(user)
+text = "Python,Java,Go"
+languages = text.split(",")
+print(languages)
 ```
 
-### 位置参数和关键字参数混用
-
-位置参数必须放在关键字参数前面：
+按空白拆分：
 
 ```python
-create_user("小戡", age=9, city="北京")
+sentence = "Python is easy to learn"
+words = sentence.split()
+print(words)
 ```
 
-错误写法：
+## 4. `join()`：拼接
 
 ```python
-# create_user(name="小戡", 9, city="北京")
+words = ["Python", "is", "useful"]
+sentence = " ".join(words)
+print(sentence)
 ```
 
-### 动手练习
-
-把 Day 2 的 `add_item` 分别用位置方式和关键字方式调用。
-
-## 3. 默认参数
-
-### 知识点
-
-默认参数允许调用者省略常用配置。
+`join()` 的左边是分隔符，括号里必须是一组字符串。
 
 ```python
-def create_report(title, format="text", separator="|"):
+# ",".join(["a", 2])  # 错误：2不是字符串
+",".join(["a", str(2)])
+```
+
+## 5. `replace()`：替换
+
+```python
+text = "我喜欢Java"
+text = text.replace("Java", "Python")
+print(text)
+```
+
+可以连续替换：
+
+```python
+text = "  Hello, Python!  "
+cleaned = text.strip().replace(",", "").replace("!", "")
+print(cleaned)
+```
+
+## 6. 多行文本
+
+```python
+log = """INFO start
+ERROR failed
+INFO retry"""
+
+lines = log.splitlines()
+for line in lines:
+    print(line)
+```
+
+`splitlines()` 比 `split("\n")` 更适合处理不同平台的换行。
+
+## 7. 字符串统计
+
+```python
+def count_words(text):
+    words = text.strip().split()
+    return len(words)
+
+print(count_words("Python makes text processing easy"))
+```
+
+统计关键词：
+
+```python
+def count_keyword(text, keyword):
+    return text.lower().count(keyword.lower())
+```
+
+## 8. 文本分析器设计
+
+把大问题拆成小函数：
+
+```python
+def clean_text(text):
+    return text.strip().lower()
+
+
+def get_lines(text):
+    return text.splitlines()
+
+
+def get_words(text):
+    return text.split()
+
+
+def build_summary(text):
     return {
-        "title": title,
-        "format": format,
-        "separator": separator,
+        "字符数": len(text),
+        "行数": len(get_lines(text)),
+        "单词数": len(get_words(text)),
     }
-
-print(create_report("成绩报告"))
-print(create_report("成绩报告", format="csv"))
 ```
 
-### 参数定义顺序
+今天的终极项目就是把这些动作组合起来。
 
-没有默认值的参数必须放在有默认值的参数前面：
+## 常见错误
+
+### 忘记字符串不可变
 
 ```python
-# 正确
-# def report(title, format="text"):
-#     pass
-
-# 错误
-# def report(format="text", title):
-#     pass
+text.replace("old", "new")
+# 没有保存返回值，text本身不会改变
 ```
 
-### 动手练习
-
-给报告设置增加 `show_total=False` 和 `encoding="utf-8"`。
-
-## 4. 可变默认参数陷阱
-
-### 错误写法
+正确：
 
 ```python
-def add_tag(tag, tags=[]):
-    tags.append(tag)
-    return tags
-
-print(add_tag("python"))
-print(add_tag("ai"))
+text = text.replace("old", "new")
 ```
 
-第二次调用可能得到：
+### `join()` 拼数字
+
+先用 `str()` 转成字符串。
+
+### 空字符串
 
 ```python
-["python", "ai"]
+"".split()  # []
+"".strip()  # ""
 ```
 
-因为这个列表只在函数定义时创建一次，后续调用会继续使用它。
+必须考虑输入为空的情况。
 
-### 正确写法
+## 今日项目：日志摘要工具
 
-```python
-def add_tag(tag, tags=None):
-    if tags is None:
-        tags = []
+输入：
 
-    tags.append(tag)
-    return tags
+```text
+INFO user login
+ERROR database timeout
+INFO retry success
 ```
 
-### 动手练习
+输出：
 
-修复一个使用 `items=[]` 的购物车函数。
-
-## 5. 参数校验
-
-参数设计不只是“接收值”，还要拒绝明显错误。
-
-```python
-def create_score(name, score):
-    if score < 0 or score > 100:
-        raise ValueError("分数必须在 0 到 100 之间")
-
-    return {"name": name, "score": score}
-```
-
-### 动手练习
-
-给 `create_report` 增加检查：标题不能为空，格式只能是 `text` 或 `csv`。
-
-## 6. 参数解包预览
-
-这一节只看懂，不作为今天的主要任务。
-
-列表可以用 `*` 拆开：
-
-```python
-def add(a, b, c):
-    return a + b + c
-
-numbers = [1, 2, 3]
-print(add(*numbers))
-```
-
-字典可以用 `**` 拆开：
-
-```python
-def create_user(name, age):
-    return {"name": name, "age": age}
-
-user = {"name": "小戡", "age": 9}
-print(create_user(**user))
-```
-
-Day 4 再正式学习 `*args` 和 `**kwargs`。
-
-## 7. 今日小项目：成绩单设置生成器
-
-目标接口：
-
-```python
-def make_settings(
-    title="未命名报告",
-    format="text",
-    separator="|",
-    show_total=False,
-):
-    ...
+```text
+总行数：3
+INFO：2
+ERROR：1
+错误摘要：database timeout
 ```
 
 要求：
 
-- 返回一个字典；
-- 默认调用能正常工作；
-- 关键字参数可以覆盖默认设置；
-- 非法格式抛出 `ValueError`；
-- 不修改外部传入的列表或字典。
+- 清理每一行；
+- 按空格拆分；
+- 判断日志级别；
+- 用字典统计数量；
+- 返回报告字符串。
 
 ## 调试顺序
 
-每写一个函数就立即测试：
-
 ```python
-print(make_settings())
-print(make_settings(title="数学成绩", format="csv"))
+sample = "INFO start\nERROR failed"
+print(sample.splitlines())
+print(clean_text(sample))
+print(build_summary(sample))
 ```
 
-再测试错误：
-
-```python
-# print(make_settings(format="xml"))
-```
-
-## 今日任务
-
-1. 完成位置参数练习；
-2. 完成关键字参数练习；
-3. 完成默认参数练习；
-4. 修复可变默认参数；
-5. 加入参数校验；
-6. 完成成绩单设置生成器。
+每完成一个函数就运行一次，不要全部写完才调试。

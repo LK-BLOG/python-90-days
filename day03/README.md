@@ -1,41 +1,57 @@
-# Day 3：位置参数、关键字参数与默认参数
+# Day 3：字符串与文本处理
 
 ## 今天要做出的东西
 
-一个**成绩单设置生成器**。你会让函数支持：
+一个**文本信息分析器**：输入一段文字，输出清洗后的文本、单词数量、关键词和摘要。
 
-- 按顺序传参数；
-- 写出参数名传参数；
-- 省略参数使用默认值；
-- 避免可变默认参数造成的数据污染。
+今天不再讲函数参数。函数只作为工具使用，重点放在字符串本身。
 
 ## 前置
 
-先完成 Day 2 的列表与函数拆分。
+- Day 1：会写函数和 return；
+- Day 2：会用列表、字典和 for 循环。
 
-## 学习顺序
+## 今天学什么
 
-1. 运行 `examples/` 中的函数参数示例；
-2. 阅读 `lesson.md`；
-3. 完成 `starter/challenge01.py` 到 `challenge05.py`；
-4. 完成 `starter/ultimate.py`；
-5. 每个函数增加两个自己的测试；
-6. 最终版本放进 `code/`。
+- 字符串索引和切片；
+- `lower()`、`upper()`、`strip()`；
+- `split()`：字符串拆成列表；
+- `join()`：列表拼成字符串；
+- `replace()`：替换文本；
+- f-string 输出；
+- 多行文本处理；
+- 用多个小函数完成文本分析。
 
-## 今天暂时不学
+## 执行顺序
 
-以下内容在后面的日期正式学习：
+1. 运行 `examples/` 中的字符串示例；
+2. 完成 `starter/challenge01.py`：切片和清洗；
+3. 完成 `starter/challenge02.py`：拆分单词；
+4. 完成 `starter/challenge03.py`：替换敏感词；
+5. 完成 `starter/challenge04.py`：统计文本；
+6. 完成 `starter/challenge05.py`：文本分析器；
+7. 完成 `starter/ultimate.py`：日志摘要工具；
+8. 把完成版放入 `code/`。
 
-- `*args`、`**kwargs`：Day 4
-- 作用域和 `global`：Day 19
-- 闭包：Day 20
-- lambda、map、filter：Day 20
+## 最小示例
+
+```python
+text = "  Hello Python, Python is useful.  "
+
+text = text.strip()
+text = text.lower()
+words = text.replace(",", "").replace(".", "").split()
+
+print(words)
+print(" ".join(words))
+```
 
 ## 完成标准
 
-- [ ] 能区分位置参数和关键字参数；
-- [ ] 会使用默认参数；
-- [ ] 知道参数必须按什么顺序写；
-- [ ] 能解释可变默认参数为什么危险；
-- [ ] 能写一个可配置的函数；
-- [ ] 能独立完成终极挑战。
+- [ ] 会用切片取出字符串的一部分；
+- [ ] 会用 `strip()` 清理两端空白；
+- [ ] 会用 `split()` 得到列表；
+- [ ] 会用 `join()` 拼接列表；
+- [ ] 会用 `replace()` 替换内容；
+- [ ] 能统计字数、行数和关键词；
+- [ ] 能把多个字符串函数拆开组合。
