@@ -22,10 +22,13 @@ def get_expensive_items(items, minimum_price):
     # TODO：读取 item['price']
     # TODO：符合条件时把 item append 到 result
     # TODO：返回 result
-    pass
+    for item in items:
+        if item['price'] >= minimum_price:
+            result.append(item)
+            return result
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     bag = [
         {'name': '药水', 'price': 30},
         {'name': '木剑', 'price': 50},

@@ -7,7 +7,8 @@ def add_item(items, item):
     """添加一个物品，并返回修改后的列表。"""
     # TODO：使用 append(item)
     # TODO：返回 items
-    pass
+    items.append(item)
+    return items
 
 
 def remove_item(items, item):
@@ -18,7 +19,9 @@ def remove_item(items, item):
     # TODO：先判断 item 是否在 items 中
     # TODO：存在时使用 remove(item)
     # TODO：返回 items
-    pass
+    if item in items:
+        items.remove(item)
+    return items
 
 
 if __name__ == '__main__':

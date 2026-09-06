@@ -10,14 +10,20 @@ def build_person_report(name, age, city, hobbies):
     # TODO：创建空字典
     # TODO：逐个添加“姓名”“年龄”“城市”“爱好”四个键
     # TODO：返回字典
-    pass
+    people_key_word={}
+    people_key_word["姓名"] = name
+    people_key_word["年龄"] = age
+    people_key_word["城市"] = city
+    people_key_word["爱好"] = hobbies
+    return people_key_word
 
 
 def show_person_report(person):
     """把个人信息字典逐行打印出来。"""
     # TODO：遍历 person 字典
     # TODO：每次打印一个 key 和 value
-    pass
+    for key, value in person.items():
+        print(key, ":",value)
 
 
 if __name__ == "__main__":

@@ -23,6 +23,10 @@ def divide(a, b):
 OPERATIONS = {
     # TODO：把 add、subtract、multiply、divide 放进这个字典。
     # "add": add,
+    "add": add,
+    "subtract": subtract,
+    "multiply": multiply,
+    "divide": divide,
 }
 
 
@@ -34,9 +38,17 @@ def dispatch(action, a, b):
     """
     # TODO：从 OPERATIONS 取出函数，再调用它。
     # 提示：func = OPERATIONS[action]
-    pass
+    if action in OPERATIONS:
+        func = OPERATIONS[action]
+        return func(a, b)
+    else:
+        raise NameError("'"+action+"' 不是一个有效的参数")
+
+
+
 
 
 if __name__ == "__main__":
     print(dispatch("add", 3, 5))
     print(dispatch("multiply", 4, 7))
+    print(dispatch("fucking", 2, 4))

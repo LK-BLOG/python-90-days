@@ -22,7 +22,7 @@ def print_report(title, names, scores):
     # TODO：用一个 for 循环按下标同时取出 names 和 scores
     # 提示：range(len(names))
     # TODO：打印“姓名：分数分”
-    pass
+    print("title: ", title,"\nnames: ", names,"\nscores: ", scores)
 
 
 if __name__ == "__main__":

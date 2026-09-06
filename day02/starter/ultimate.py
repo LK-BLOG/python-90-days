@@ -1,41 +1,104 @@
-# Day 2 终极挑战：完整游戏背包
+# Day 2 终极挑战：战斗记录分析器
 # 难度：★★★★★
-# 目标：做一个可交互的背包管理程序。
+#
+# 目标：分析一组游戏战斗记录，输出统计报告。
+#
+# 这不是背包管理器的重复版：
+# - 挑战 5 练“修改列表中的数据”；
+# - 本题练“读取列表中的字典，筛选和统计数据”。
+#
+# 只使用 Day 1–2 已学内容：函数、字典、列表、for、if、append、return、sum、len。
 
 
-def add_item(items, name, kind, price, count=1):
-    """添加物品；同名物品可以选择叠加数量。"""
-    # TODO：实现添加逻辑
-    pass
+def get_player_records(records, player_name):
+    """返回某个玩家参与的所有记录。
+
+    每条记录示例：
+        {
+            "player": "小戡",
+            "enemy": "史莱姆",
+            "damage": 20,
+            "win": True
+        }
+
+    参数：
+        records: 战斗记录列表
+        player_name: 要查找的玩家名
+
+    返回：
+        只包含该玩家记录的新列表
+    """
+    result = []
+
+    # TODO：遍历 records
+    # TODO：如果 record["player"] 等于 player_name，就加入 result
+    # TODO：return result
+    for record in records:
+        if record['player'] == player_name:
+            result.append(record)
+    return result
 
 
-def remove_item(items, name, count=1):
-    """减少物品数量；数量归零时删除整条记录。"""
-    # TODO：处理物品不存在、数量不足、数量归零
-    pass
+def calculate_total_damage(records):
+    """计算记录列表中的总伤害。"""
+    total = 0
+
+    # TODO：遍历 records
+    # TODO：把 record["damage"] 加到 total
+    # TODO：return total
+    for record in records:
+        total += record['damage']
+    return total
+
+def count_wins(records):
+    """统计获胜场数。"""
+    wins = 0
+
+    # TODO：遍历 records
+    # TODO：如果 record["win"] 是 True，wins 加 1
+    # TODO：return wins
+    for record in records:
+        if record['win']:
+            wins += 1
+    return wins
 
 
-def search_items(items, keyword='', kind=None, minimum_price=None):
-    """按名称关键词、类型和最低价格筛选物品。"""
-    # TODO：组合多个条件，返回新的列表
-    pass
+def build_battle_report(records, player_name):
+    """为一个玩家生成战斗统计字典。
+
+    返回格式：
+        {
+            "玩家": "小戡",
+            "战斗场数": 2,
+            "胜利场数": 1,
+            "总伤害": 55
+        }
+
+    提示：本函数不要重新遍历和统计所有东西，
+    要调用上面已经写好的 3 个函数。
+    """
+    # TODO：先用 get_player_records 得到该玩家记录
+    # TODO：调用 calculate_total_damage 和 count_wins
+    # TODO：创建并 return 报告字典
+    player_records=get_player_records(records, player_name)
+    total_damage = calculate_total_damage(player_records)
+    wins = count_wins(player_records)
+    player_total={}
+    player_total["玩家"]=player_name
+    player_total["战斗场数"]=len(player_records)
+    player_total['总伤害']=total_damage
+    player_total['胜利场数']=wins
+    return player_total
 
 
-def backpack_report(items):
-    """返回背包报告：种类数、总数量、总价值和物品列表。"""
-    # TODO：调用前面写过的函数或自己拆分辅助函数
-    pass
+if __name__ == "__main__":
+    battle_records = [
+        {"player": "小戡", "enemy": "史莱姆", "damage": 20, "win": True},
+        {"player": "小戡", "enemy": "哥布林", "damage": 35, "win": False},
+        {"player": "小红", "enemy": "史莱姆", "damage": 18, "win": True},
+    ]
 
+    print(build_battle_report(battle_records, "小戡"))
+    # 期望：
+    # {'玩家': '小戡', '战斗场数': 2, '胜利场数': 1, '总伤害': 55}
 
-def run_demo():
-    """运行一组演示数据；真正交互功能可作为加餐。"""
-    bag = []
-    # TODO：添加至少三种物品
-    # TODO：删除一种物品的一部分数量
-    # TODO：搜索并打印结果
-    # TODO：打印最终报告
-    print('请完成完整背包系统')
-
-
-if __name__ == '__main__':
-    run_demo()

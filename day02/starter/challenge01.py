@@ -15,7 +15,9 @@ def show_items(items):
     # TODO：用 range(len(items)) 遍历列表
     # TODO：用下标取出每个物品
     # TODO：打印编号和物品名称
-    pass
+
+    for i in range(len(items)):
+        print(str(i+1)+"."+items[i])
 
 
 if __name__ == '__main__':
